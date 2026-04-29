@@ -8,7 +8,6 @@ let time = document.getElementById("time"); // часы
 let chTime = document.getElementById("clock"); // чекбокс часов
 let date = document.getElementById("date"); //дата
 let chDate = document.getElementById("chDate"); // чекбокс для даты
-let chWeather = document.getElementById("chWeather");
 tools.onclick = function() {
     group.classList.toggle("скрыт"); // при нажатии меняем появления инструментов
 };
@@ -70,13 +69,6 @@ function toggleDate() {
     }
 };
 let weather = document.getElementById("weather")
-function toggleWeather() {
-    if(chWeather.checked) {
-         weather.style = 'text-align: center;font-size: 24px;height: auto; opacity: 1; padding: 0;margin: 0;transition: all 0.4s ease;'
-    } else {
-        weather.style = 'text-align: center; font-size: 24px; height: auto; opacity: 0; padding: 0;margin: 0; transition: all 0.4s ease;'
-    }
-};
 toggleClockVisibility();
 toggleDate();
 toggleWeather();
@@ -99,22 +91,3 @@ function getDate() {
     date.textContent = `${day}.${mounth}.${year}`;
 }
 getDate();
-const API = "9c5fde46a0c03264fca0443f52999c22";
-function getWeatherLog() {
-    navigator.geolocation.getCurrentPosition(async (position) => {
-
-        const lat = position.coords.latitude;
-        const lon = position.coords.longitude;
-        const url = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${API}&units=metric&lang=ru`;
-        try {
-            const response = await fetch(url);
-            const data = await response.json();
-            console.log(data); 
-        } catch (error) {
-            console.error("Ошибка при загрузке:", error);
-        }
-    }, () => {
-        console.log("Доступ к геолокации запрещен.");
-    });
-};
-getWeatherLog();
