@@ -70,7 +70,6 @@ function toggleDate() {
 };
 toggleClockVisibility();
 toggleDate();
-toggleWeather();
 if (chDate) {
     chDate.addEventListener('change', toggleDate);
 }
