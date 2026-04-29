@@ -68,13 +68,9 @@ function toggleDate() {
         
     }
 };
-let weather = document.getElementById("weather")
 toggleClockVisibility();
 toggleDate();
 toggleWeather();
-if (chWeather) {
-    chWeather.addEventListener('change', toggleWeather);
-}
 if (chDate) {
     chDate.addEventListener('change', toggleDate);
 }
