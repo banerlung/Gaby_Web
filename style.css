@@ -1,0 +1,344 @@
+body {
+font-family: 'Courier New', Courier, monospace;
+min-height: 100vh;
+background-color: #ffffff;
+color: black;
+transition: all 0.6s ease;
+overflow-x: hidden;
+margin: 0;
+padding: 0;
+}
+.темная {
+background-color: #272727;
+color: rgb(231, 231, 231); 
+}
+.скрыт {
+height: 0 !important;
+max-height: 0 !important;
+margin: 0 !important;
+padding: 0 !important;
+border-width: 0 !important;
+transform: translateX(-150%);
+}
+#calk {
+margin: 5px;
+border: solid black 4px;
+border-radius: 5px;
+max-width: 200px;
+height: 60px;
+font-size: 10px;
+background-color: #27272700;
+transition: all 0.3s ease;
+}
+#calk:hover {
+background-color: #8c8c8c;
+}
+#calk:active {
+transform: scale(0.95);
+}
+#group {
+display: flex;
+flex-wrap: wrap;
+flex-shrink: 1;
+margin-left: 7px;
+margin-top: 2px;
+margin-bottom: 1px;
+border-radius: 10px;
+max-width: 200px;
+min-width: 280px;
+border: solid black 5px;
+background-color: rgb(120, 120, 120);
+max-height: 500px;
+transition: transform 0.3s ease, opacity 0.8s ease, visibility 0.8s ease, background-color 0.3s ease, max-height 0.3s ease-in-out;
+}
+#group:hover {
+background-color: rgb(95, 95, 95)y;
+}
+#tools {
+margin-top: 5px;
+margin-bottom: 0;
+max-width: 150px;
+border: solid black 2px;
+border-radius: 6px;
+transition: all 0.3s ease;
+background-color: #eaeaea;
+&:active {
+background-color: #828282;
+color: white;
+        }
+}
+#search {
+display: flex;
+flex-direction: column;
+align-items: center;
+justify-content: center; 
+text-align: center;
+padding: 10px;
+margin: 60px auto 0 auto;
+color: white;
+border: solid 2px #000000;
+box-shadow: 5px 2px 10px rgba(0, 0, 0, 0.8);
+max-width: 600px;
+border-radius: 15px;
+}
+#input {
+width: 500px;
+height: 50px;
+font-size: 24px;
+background-color: rgb(179, 179, 179);
+overflow: scroll;
+border-radius: 10px;
+border: solid black 3px;
+transition: transform 0.3s ease, background-color 0.3s ease;
+}
+#input:hover {
+background-color: rgb(129, 129, 129);
+}
+#input:focus {
+background-image: linear-gradient(to left, rgba(222, 222, 222, 0.588), rgba(81, 81, 81, 0.691));
+}
+#sites {
+display: flex;
+flex-wrap: wrap;
+flex-grow: 0;
+margin-top: 15px;
+justify-content: center;
+gap: 15px;
+flex-direction: row;
+max-width: 600px;
+height: 70px;
+}
+.sites {
+max-width: 50px;
+max-height: 50px;
+border-radius: 50%;
+transition: all 0.2s ease;
+border: solid black 5px;
+&:hover{
+transform: scale(1.05);
+}
+&:active {
+transform: scale(0.95);
+    }
+&:hover {
+box-shadow: 5px 2px 10px rgba(0, 0, 0, 0.8);
+}
+}
+::placeholder {
+color: white;
+}
+h1 {
+font-family: Oswald;
+}
+#result {
+border: solid black 3px;
+min-width: 40px;
+max-width: 80px;
+margin-left: 5px;
+margin-bottom: 0 !important;
+border-radius: 7px;
+height: 56px;
+font-size: 20px;
+background: transparent;
+border: none;
+}
+#list {
+display: flex;
+flex-direction: column;
+gap: 5px;
+list-style: square;
+background-color: rgb(177, 177, 177);
+max-width: 100px;
+border-radius: 5px;
+transition: transform 0.4s ease, opacity 0.4s ease, visibility 0.5s ease, background-color 0.3s ease, box-shadow 0.3s ease;
+transform: translateX(0);
+min-width: 150px;
+width: auto;
+height: auto;
+&:hover {
+background-color: #9c9c9c;
+box-shadow: 7px 5px 10px rgba(0, 0, 0, 0.8);
+}
+}
+#list.hidden {
+transform: translateX(-150%);
+opacity: 0;
+visibility: hidden;
+}
+#searchValue {
+display: flex;
+flex-direction: row;
+flex-wrap: wrap;
+}
+#Theme {
+border-radius: 7px;
+margin-bottom: 5px;
+background-color: #eaeaea;
+transition: all 0.3s ease;
+border: solid black 2px;
+&:active {
+background-color: #a8a8a8;
+color: white;
+}
+}
+#menu {
+background: transparent !important;
+border: none;
+transition: all 0.5s ease;
+cursor: pointer;
+&:active {
+transform: rotate(360deg);
+}
+}
+#menuDiv {
+position: fixed;
+left: 5px;
+top: 5px;
+}
+#time {
+position: relative;
+font-size: 90px;
+height: auto;
+text-align: center;
+padding: 0;
+margin-bottom: 0;
+margin-top: 0px;
+margin-left: 10px;
+margin-right: 10px;
+transition: all 0.3s ease;
+}
+#href {
+background-color: #4d4d4d;
+border: solid 3px #000000;
+border-radius: 7px;
+min-width: 70px;
+min-height: 20px;
+}
+#clockLabel {
+text-align: center;
+font-size: 24px;
+font-weight: 500;
+}
+#date {
+text-align: center;
+font-size: 32px;
+height: auto;
+padding: 0;
+margin: 0;
+transition: all 0.4s ease !important;
+}
+#gaby {
+text-align: center;
+font-size: 42px;
+font-weight: 300;
+}
+#informatiion {
+display: flex;
+margin-left: auto;
+margin-right: auto;
+margin-top: 20px;
+flex-direction: column;
+height: 200px;
+max-width: 450px;
+border-radius: 15px;
+text-align: center;  
+padding: auto;
+}
+@media(max-width: 780px) {
+#time {
+font-size: 48px;
+margin-top: 5px;
+margin-left: 5px;
+margin-right: 5px;
+transition: all 0.5s ease;
+    }
+#gaby {
+font-size: 36px;
+font-weight: 300;
+margin: 40px 0 0 0 ;
+}
+#date {
+font-size: 18px;
+padding: 0;
+transition: all 1s ease;
+    }
+#informatiion {
+width: 240px;
+margin: 25px auto 0 auto;
+max-height: 100px;
+    }
+.sites {
+max-width: 40px;
+max-height: 40px;
+    }
+#input {
+height: 40px;
+width: auto;
+font-size: 24px;
+    }
+#result {
+position: absolute;
+right: 25px;
+min-width: 50px;
+max-width: 70px;
+margin-left: 3px;
+height: 48px;
+font-size: 18px;
+}
+#sear {
+width: 35px;
+height: 35px;
+}
+#list {
+min-width: 100px;
+padding-top: 0;
+padding: 1px;
+height: auto;
+    }
+#search {
+margin-top: 100px;
+}
+#group {
+min-width: 250px;
+    }
+}
+#dateLabel {
+text-align: center;
+font-size: 24px;
+font-weight: 500;
+}
+.switcher {
+position: relative;
+margin: 0;
+width: 50px;
+height: 24px;
+border-radius: 20px;
+background-color: #636363;
+appearance: none;
+border: solid black 2px;
+transition: all 0.3s ease;
+}
+.switcher:checked {
+background-color: #007ed8;
+transition: all 0.3s ease;transition: all 0.3s ease;
+}
+.switcher::before {
+content: "";
+transition: all 0.3s ease;
+position: absolute;
+top: -1px;
+width: 23px;
+height: 22px;
+border-radius: 50%;
+background-color: #ffffff;
+}
+.switcher:checked::before {
+transform: translateX(23px);
+transition: all 0.3s ease;
+}
+#weatherLabel {
+text-align: center;
+font-size: 18px;
+font-weight: 500;
+margin: 0;
+}

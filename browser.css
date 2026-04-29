@@ -1,0 +1,181 @@
+body {
+margin: 0;
+padding: 0;
+}
+.window {
+width: 100vw;
+height: 90vh;
+margin: 0;
+border: none;
+}
+#url {
+display: flex;
+flex-direction: row;
+gap: 5px;
+align-items: center;
+justify-content: center;
+}
+#urlAdress {
+margin-top: 15px;
+width: 900px;
+height: 30px;
+border: none;
+border-radius: 7px;
+background-color: rgb(150, 150, 150);
+font-size: 24px;
+margin-top: 0 !important;
+border: solid black 2px;
+color: black;
+}
+header {
+position: sticky;
+border-bottom: solid black 10px;
+height: 10vh;
+background-color: rgb(255, 255, 255);
+color: black;
+transition: all 0.3s ease;
+}
+header.dark {
+background-color: rgb(123, 123, 123);
+color: white;
+}
+#buttons {
+display: flex;
+gap: 5px;
+margin-top: 5px;
+flex-direction: row;
+}
+#search {
+height: 30px;
+transition: all 0.3s ease;
+background: transparent;
+border: none;
+}
+h1 {
+text-align: center;
+}
+#Home {
+min-width: 40px;
+min-height: 20px;
+max-width: 70px;
+max-height: 40px;
+border: none;
+background: transparent;
+transition: all 0.3s ease;
+}
+#back {
+min-width: 60px;
+min-height: 30px;
+max-width: 70px;
+max-height: 40px;
+background: transparent;
+border: none;
+transition: all 0.3s ease;
+}
+#reload {
+min-width: 40px;
+min-height: 20px;
+max-width: 70px;
+max-height: 40px;
+background: transparent;
+border: none;
+transition: all 0.3s ease;
+}
+#forward {
+min-width: 40px;
+min-height: 20px;
+max-width: 70px;
+max-height: 40px;
+background: transparent;
+border: none;
+transition: all 0.3s ease;
+}
+iframe {
+background-color: rgb(72, 72, 72);
+}
+#sites{
+display: flex;
+justify-content: left;
+flex-direction: row;
+border-bottom: solid black 3px;
+width: auto;
+height: 40px;
+gap: 5px;
+background-color: rgb(74, 74, 74);
+}
+.sites {
+background-color: rgb(107, 107, 107);
+border-radius: 7px;
+}
+#plus {
+width: 50px;
+height: 50px;
+margin: 0;
+background: transparent !important;
+border: none;
+transition: all 0.5s ease;
+cursor: pointer;
+}
+.site {
+width: auto;
+border: solid black 3px;
+border-radius: 7px;
+background-color: rgb(107, 107, 107);
+}
+.close {
+margin-top: 0;
+margin-left: 0;
+}
+@media(max-width: 780px) {
+#urlAdress {
+position: absolute;
+right: 5px;
+top: 35px;
+font-size: 14px;
+width: 150px;
+height: 20px;
+}
+#sites {
+height: 30px;
+}
+#search {
+position: absolute;
+top: 35px;
+right: 0;
+}
+#header {
+height: 30px;
+background: transparent;
+border: none;
+position: sticky;
+}
+#buttons {
+display: flex;
+gap: 5px;
+margin-top: 0;
+flex-direction: row;
+}
+#Home {
+min-width: 30px;
+min-height: 10px;
+max-width: 60px;
+max-height: 30px;
+transition: all 0.3s ease;
+}
+#back {
+border: none;
+min-width: 60px;
+min-height: 30px;
+max-width: 70px;
+max-height: 40px;
+}
+#reload {
+min-width: 40px;
+min-height: 20px;
+max-width: 70px;
+max-height: 40px;
+}
+
+
+
+}
