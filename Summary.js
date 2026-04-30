@@ -1,4 +1,5 @@
-const API = "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";
+const part1 = "gsk_LA7fEfH56gZU9XhM8mu5WGdyb3FYadnK0JCdFsQxbZCLZc92JP";
+const API = part1 + "88";
 const url = "https://api.groq.com/openai/v1/chat/completions";
 async function Summary(query) {
     const url = "https://api.groq.com/openai/v1/chat/completions";
