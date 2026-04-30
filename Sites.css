@@ -64,9 +64,10 @@ width: 35px;
 height: 35px;
 }
 #results {
+position: relative;
 color: white;
 border-radius: 7px;
-margin-top: 20px;
+margin-top: 60px;
 width: 900px;
 margin-left: 100px;
 }
@@ -100,7 +101,22 @@ flex-direction: row;
 width: 30px;
 height: 30px;
 }
-
+#home {
+position: absolute;
+top: 0;
+left: 0;
+}
+#AI {
+position: relative;
+top: 50px;
+border-left: 5px solid #3b82f6;
+padding: 10px;
+left: 100px;
+color: white;
+height: auto;
+font-size: 24px;
+font-weight: 500;
+}
 @media(max-width: 780px) {
 .result {
 padding-bottom: 10px;
@@ -151,7 +167,18 @@ overflow: hidden;
 h1 {
 font-size: 15px;
 }
+#AI {
+top: 40px;
+padding: 0;
+left: 0 !important;
+font-size: 14px;
+margin: 0;
+padding-left: 5px;
+height: auto;
+font-weight: 500;
+}
+}
 
-
-
+a {
+color: #88abe4;
 }

@@ -39,6 +39,12 @@ async function ShowSites(urlSite) {
                 hl: 'ru'    // Русский язык
             })
         });
+        const AiDiv = document.getElementById("AI");
+        let requiest = await Summary(urlSite);
+        AiDiv.innerHTML = ""
+        const AiText = document.createElement("p");
+        AiDiv.appendChild(AiText);
+        AiText.innerHTML =  requiest;
     const data = await response.json();
     let topics = data.organic;
     let list = document.getElementById("results");
