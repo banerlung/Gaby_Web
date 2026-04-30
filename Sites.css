@@ -1,0 +1,157 @@
+* {
+margin: 0;
+}
+body {
+background-color: #383b3a;
+}
+.result {
+    position: relative;
+    margin-bottom: 25px;
+    padding-bottom: 15px;
+    overflow: hidden;
+}
+.result .title {
+    font-size: 28px;
+    color: #99c3ff; /* Классический синий цвет ссылок Google */
+    text-decoration: none; /* Убираем подчеркивание */
+    display: block; /* Занимает всю ширину */
+    margin-bottom: 3px;
+    line-height: 1.3; /* Межстрочный интервал */
+    word-wrap: break-word; /* Перенос длинных слов */
+}
+
+.result .title:hover {
+    text-decoration: underline; /* Подчеркивание при наведении */
+}
+
+/* Описание (серый текст) */
+.result .description {
+    font-size: 24px;
+    color: #ddd5d5;
+    line-height: 1.5; /* Чтобы текст дышал */
+    margin-bottom: 5px;
+    word-wrap: break-word; /* Перенос длинных слов */
+}
+.result .url {
+    position: absolute;
+    top: 5px;
+    left: 35px;
+    font-size: 18px;
+    color: #cfd6d1; /* Зеленый цвет URL */
+    text-decoration: none;
+    display: block;
+    margin-bottom: 5px;
+    word-break: break-all; /* Обрезает очень длинные ссылки */
+}
+
+/* Иконка сайта */
+.result .img {
+    border-radius: 50%;
+    width: 24px;
+    height: 24px;
+    vertical-align: middle;
+    margin-right: 8px;
+    margin-bottom: 2px;
+}
+
+button {
+background: transparent;
+border: none;
+cursor: pointer;
+}
+img {
+width: 35px;
+height: 35px;
+}
+#results {
+color: white;
+border-radius: 7px;
+margin-top: 20px;
+width: 900px;
+margin-left: 100px;
+}
+#input {
+position: absolute;
+background-color: rgb(136, 136, 136);
+color: rgb(0, 0, 0);
+border: solid black 2px;
+font-size: 24px;
+border-radius: 7px;
+left: 100px;
+top: 5px;
+width: 500px;
+height: 30px;
+&::placeholder {
+color: black;
+font-size: 18px;
+}
+}
+#search {
+position: absolute;
+left: 560px;
+top: 5px;
+cursor: pointer;
+}
+#searchD {
+display: flex;
+flex-direction: row;
+}
+#searchB {
+width: 30px;
+height: 30px;
+}
+
+@media(max-width: 780px) {
+.result {
+padding-bottom: 10px;
+}
+#home {
+position: absolute;
+
+}
+#search {
+height: 35px;
+width: 35px;
+left: 320px;
+}
+#results {
+color: white;
+border-radius: 7px;
+margin-top: 15px;
+width: 200px;
+margin-top: 55px;
+margin-left: 15px;
+}
+#input {
+left: 50px;
+margin: 0;
+width: 300px;
+height: 30px;
+}
+.result .title {
+font-size: 20px;
+margin-bottom: 3px;
+}
+.result .description {
+font-size: 14px;
+display: -webkit-box;
+-webkit-line-clamp: 3;
+-webkit-box-orient: vertical;
+overflow: hidden;               
+text-overflow: ellipsis;
+}
+.result .url {
+font-size: 12px;
+top: 2px;
+display: -webkit-box;
+-webkit-line-clamp: 1;
+-webkit-box-orient: vertical;
+overflow: hidden;               
+}
+h1 {
+font-size: 15px;
+}
+
+
+
+}
