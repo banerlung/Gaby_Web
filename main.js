@@ -8,7 +8,6 @@ let time = document.getElementById("time"); // часы
 let chTime = document.getElementById("clock"); // чекбокс часов
 let date = document.getElementById("date"); //дата
 let chDate = document.getElementById("chDate"); // чекбокс для даты
-let chWeather = document.getElementById("chWeather");
 tools.onclick = function() {
     group.classList.toggle("скрыт"); // при нажатии меняем появления инструментов
 };
@@ -71,9 +70,6 @@ function toggleDate() {
 };
 toggleClockVisibility();
 toggleDate();
-if (chWeather) {
-    chWeather.addEventListener('change', toggleWeather);
-}
 if (chDate) {
     chDate.addEventListener('change', toggleDate);
 }
