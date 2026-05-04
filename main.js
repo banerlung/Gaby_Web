@@ -18,7 +18,7 @@ result.onclick = async function() {
 if(query.includes("https://") || query.includes("http:/")) {
  window.open("browser.html");
 }
-        const answer = await Summary(query); 
+        await Summary(query); 
         window.open("Sites.html"); 
     } catch (error) {
         console.error(error);
