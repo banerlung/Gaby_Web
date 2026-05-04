@@ -19,7 +19,13 @@ async function Summary(query) {
     }
     let answer = data.answer;
     let AI = document.getElementById("AI");
-    AI.innerHTML = answer;
+    AI.innerHTML = "";
+    AI.innerHTML = output.innerHTML = `
+        <div style="animation: fadeIn 0.5s;">
+          <h3 style="color: #99c3ff; margin-bottom: 10px;">🤖 Ответ:</h3>
+          <div style="line-height: 1.5; color: white;">${answer}</div>
+        </div>
+      `;;
     return `<p style="color:red">Ошибка ИИ: ${data.error || 'Неизвестная ошибка'}</p>`;
 
   } catch (err) {
