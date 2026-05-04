@@ -13,33 +13,18 @@ tools.onclick = function() {
 };
 result.onclick = async function() {
     let query = input.value.trim();
-    if (!query) return; // Если пусто, ничего не делаем
-
-    // Показываем, что думаем (можно добавить элемент loading, если есть)
-    // Если у тебя нет специального блока для вывода ИИ, давай выведем его прямо в консоль или alert для теста:
-    
+    if (!query) return;
     try {
-        // Вызываем функцию Summary из файла Summary.js
-        // Убедись, что Summary.js подключен в HTML ПОСЛЕ main.js или до него, но глобально доступен
+            if(query.includes("https://") || query.includes("http:/")) {
+    window.open("browser.html");
+}
         const answer = await Summary(query); 
-        
-        // Выводим результат. 
-        // Так как у тебя в Sites.html есть <div id="results"></div>, давай используем его.
-        // Но если ты на главной странице (где main.js), то results может не быть.
-        
-        // Для теста пока просто покажем в alert или запишем в localStorage, как ты делал раньше:
-        alert("Ответ ИИ: " + answer); 
-        
-        // А потом уже открывай страницу, если нужно:
-        // window.open("Sites.html"); 
-
+        window.open("Sites.html"); 
     } catch (error) {
         console.error(error);
         alert("Ошибка при запросе к ИИ");
     }
-    if(resultSearch.includes("https://") || resultSearch.includes("http:/")) {
-    window.open("browser.html");
-}
+
 };
 
 MenuButton.onclick = function() {
