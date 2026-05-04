@@ -17,8 +17,9 @@ async function Summary(query) {
     if (data.answer) {
       return data.answer; 
     }
-
-    // 4. Если ошибка — показываем её
+    let answer = data.answer;
+    let AI = document.getElementById("AI");
+    AI.innerHTML = answer;
     return `<p style="color:red">Ошибка ИИ: ${data.error || 'Неизвестная ошибка'}</p>`;
 
   } catch (err) {

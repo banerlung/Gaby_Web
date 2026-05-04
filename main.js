@@ -15,8 +15,8 @@ result.onclick = async function() {
     let query = input.value.trim();
     if (!query) return;
     try {
-            if(query.includes("https://") || query.includes("http:/")) {
-    window.open("browser.html");
+if(query.includes("https://") || query.includes("http:/")) {
+ window.open("browser.html");
 }
         const answer = await Summary(query); 
         window.open("Sites.html"); 
