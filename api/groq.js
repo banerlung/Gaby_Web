@@ -30,7 +30,7 @@ export default async function handler(req, res) {
       },
       body: JSON.stringify({
         model: 'llama-3.1-8b-instant', // Можешь поменять модель, если хочешь
-        messages: [{ role: 'user', content: query }]
+        messages: [{ role: 'user', content: `поисковой запрос пользователя: ${query}` }]
       })
     });
 
