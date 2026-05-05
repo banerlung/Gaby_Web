@@ -1,4 +1,4 @@
-let search = localStorage.getItem("resultSearch");
+let search = localStorage.getItem("SearchQuery");
 let input = document.getElementById("input");
 let searchBtn = document.getElementById("search");
 searchBtn.onclick = function() {

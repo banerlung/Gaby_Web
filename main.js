@@ -11,20 +11,20 @@ let chDate = document.getElementById("chDate"); // чекбокс для дат�
 tools.onclick = function() {
     group.classList.toggle("скрыт"); // при нажатии меняем появления инструментов
 };
-result.onclick = async function() {
+result.onclick = function() {
     let query = input.value.trim();
     if (!query) return;
-    try {
-if(query.includes("https://") || query.includes("http:/")) {
- window.open("browser.html");
-}
-        await Summary(query); 
-        window.open("Sites.html"); 
-    } catch (error) {
-        console.error(error);
-        alert("Ошибка при запросе к ИИ");
-    }
 
+    // 1. СОХРАНЯЕМ ЗАПРОС В ПАМЯТЬ БРАУЗЕРА
+    // Важно: используй то же имя ключа, что и в Sites.js (например, "gabySearchQuery")
+    localStorage.setItem("SearchQuery", query);
+
+    if(query.includes("https://") || query.includes("http:/")) {
+        window.open("browser.html");
+    } else {
+        // 2. ОТКРЫВАЕМ СТРАНИЦУ ПОИСКА
+        window.open("Sites.html"); 
+    }
 };
 
 MenuButton.onclick = function() {
