@@ -112,6 +112,7 @@ top: 50px;
 border-left: 5px solid #3b82f6;
 padding: 10px;
 left: 100px;
+max-width: 900px;
 color: white;
 height: auto;
 font-size: 24px;
