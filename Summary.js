@@ -3,6 +3,7 @@ async function Summary(query) {
     const controller = new AbortController();
     const res = await fetch('https://14e7b869-1833-4ff3-bd61-43a7ed22eb36.tunnel4.com/api/generate', {
       method: 'POST',
+      controller: controller.signal,
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({
         model: 'qwen2.5:14b',
