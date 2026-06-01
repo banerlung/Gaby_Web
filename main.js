@@ -11,22 +11,25 @@ let chDate = document.getElementById("chDate"); // чекбокс для дат�
 tools.onclick = function() {
     group.classList.toggle("скрыт"); // при нажатии меняем появления инструментов
 };
-result.onclick = function() {
+function openSite() {
     let query = input.value.trim();
     if (!query) return;
-
-    // 1. СОХРАНЯЕМ ЗАПРОС В ПАМЯТЬ БРАУЗЕРА
-    // Важно: используй то же имя ключа, что и в Sites.js (например, "gabySearchQuery")
+    
     localStorage.setItem("SearchQuery", query);
 
     if(query.includes("https://") || query.includes("http:/")) {
         window.open("browser.html");
     } else {
-        // 2. ОТКРЫВАЕМ СТРАНИЦУ ПОИСКА
         window.open("Sites.html"); 
     }
-};
-
+}
+result.onclick = openSite;
+input.addEventListener('keydown', (e) => {
+    if(e.key === 'Enter') {
+        e.preventDefault();
+        openSite()
+}
+})
 MenuButton.onclick = function() {
     list.classList.toggle('hidden');
 }
@@ -86,10 +89,35 @@ if (chTime) {
 function getDate() {
     let now = new Date();
     let day =  now.getDate();
-    let mounth = now.getMonth();
+    let mounth = now.getMonth() + 1;
     let year = now.getFullYear();
     if (day < 10) day = '0' + day;
     if (mounth < 10) mounth = '0' + mounth;
     date.textContent = `${day}.${mounth}.${year}`;
 }
 getDate();
+async function loadRates() {
+  try {
+    const res = await fetch('https://api.exchangerate.host/latest?base=RUB&symbols=USD,EUR,CNY');
+    const data = await res.json();
+    
+    const rates = data.rates;
+    const el = document.getElementById('rates');
+    
+    if (el && rates) {
+      el.innerHTML = `
+        $ ${rates.USD?.toFixed(2) || '—'} | 
+        € ${rates.EUR?.toFixed(2) || '—'} | 
+        ¥ ${rates.CNY?.toFixed(2) || '—'}
+      `;
+    }
+  } catch (e) {
+    console.log('Курсы не загрузились:', e);
+    const el = document.getElementById('rates');
+    if (el) el.textContent = '—';
+  }
+}
+document.addEventListener('DOMContentLoaded', () => {
+  loadRates();
+  setInterval(loadRates, 10 * 60 * 1000);
+});

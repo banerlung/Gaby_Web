@@ -1,4 +1,4 @@
-let site = localStorage.getItem("resultSearch");
+let site = localStorage.getItem("SearchQuery");
 let back = document.getElementById("back");
 let search2 = document.getElementById("search");
 let inputSearch = document.getElementById("urlAdress");
@@ -40,6 +40,13 @@ search2.onclick = function() {
     }
     
 };
+document.addEventListener("keydown", (e) => {
+    if (e.ctrlKey && e.key.toLowerCase() === 'w') {
+        e.preventDefault();
+        iframe.remove();
+        site2.remove();
+    }
+})
     function showTab(btn, activeFrame) {
     let allFrames = document.querySelectorAll('.window');
     for (let i = 0; i < allFrames.length; i++) {

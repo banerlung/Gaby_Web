@@ -1,5 +1,6 @@
-body {
+* {
 margin: 0;
+font-family: 'Plus Jakarta Sans', sans-serif;
 padding: 0;
 }
 .window {
@@ -46,7 +47,8 @@ margin-top: 5px;
 flex-direction: row;
 }
 #search {
-height: 30px;
+position: absolute;
+left: 1370px;
 transition: all 0.3s ease;
 background: transparent;
 border: none;
@@ -55,12 +57,7 @@ h1 {
 text-align: center;
 }
 #Home {
-min-width: 40px;
-min-height: 20px;
-max-width: 70px;
-max-height: 40px;
-border: none;
-background: transparent;
+
 transition: all 0.3s ease;
 }
 #back {
@@ -175,7 +172,5 @@ min-height: 20px;
 max-width: 70px;
 max-height: 40px;
 }
-
-
 
 }

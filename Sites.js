@@ -1,8 +1,6 @@
 let search = localStorage.getItem("SearchQuery");
 let input = document.getElementById("input");
 let searchBtn = document.getElementById("search");
-searchBtn.onclick = function() {
-input.addEventListener("input", SiteOrUrl(input.value));
 function SiteOrUrl(url) {
     if(url.includes("http:/") || url.includes("https:/")) {
         localStorage.setItem("resultSearch", url);
@@ -11,16 +9,32 @@ function SiteOrUrl(url) {
         ShowSites(url);
     };
 };
+searchBtn.onclick = function() {
+SiteOrUrl(input.value);
 }
-
+input.addEventListener('keydown', (e) => {
+    if(e.key === 'Enter') {
+        e.preventDefault();
+        SiteOrUrl(input.value)
+}
+});
+document.addEventListener("keydown", (e) => {
+      if (e.ctrlKey && e.key.toLowerCase() === 'r') {
+    e.preventDefault();
+    location.reload();
+  }
+})
 function home() {
     window.open("index.html", target = "_self");
 };
 if(!search) {
     console.error("Ошибка! перейдите на главную страницу!")
-} else {
-    ShowSites(search);
 }
+
+document.addEventListener('DOMContentLoaded', () => { 
+    ShowSites(search);
+    input.value = search;
+})
 async function ShowSites(urlSite) {
     try {
     const API = "ad9f8d9e56c377337213506262d2f698e1a01625";
@@ -40,11 +54,8 @@ async function ShowSites(urlSite) {
             })
         });
         const AiDiv = document.getElementById("AI");
-        let requiest = await Summary(urlSite);
-        AiDiv.innerHTML = ""
-        const AiText = document.createElement("p");
-        AiDiv.appendChild(AiText);
-        AiText.innerHTML =  requiest;
+        let requiest = Summary(urlSite).then(val => { AiDiv.innerHTML = "";
+        AiDiv.innerHTML =  val;});
     const data = await response.json();
     let topics = data.organic;
     let list = document.getElementById("results");

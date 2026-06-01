@@ -1,3 +1,9 @@
+@import url('https://fonts.googleapis.com/css2?family=Onest:wght@400;500;700&display=swap');
+* {
+transition: all 0.3s ease;
+color: #ffffff;
+font-family: 'Onest', sans-serif;
+}
 body {
 font-family: 'Courier New', Courier, monospace;
 min-height: 100vh;
@@ -9,7 +15,7 @@ margin: 0;
 padding: 0;
 }
 .темная {
-background-color: #272727;
+background-color: #3c3c3c;
 color: rgb(231, 231, 231); 
 }
 .скрыт {
@@ -58,14 +64,10 @@ background-color: rgb(95, 95, 95)y;
 margin-top: 5px;
 margin-bottom: 0;
 max-width: 150px;
-border: solid black 2px;
 border-radius: 6px;
-transition: all 0.3s ease;
-background-color: #eaeaea;
 &:active {
-background-color: #828282;
 color: white;
-        }
+}
 }
 #search {
 display: flex;
@@ -88,14 +90,19 @@ font-size: 24px;
 background-color: rgb(179, 179, 179);
 overflow: scroll;
 border-radius: 10px;
-border: solid black 3px;
+border: none;
 transition: transform 0.3s ease, background-color 0.3s ease;
 }
 #input:hover {
 background-color: rgb(129, 129, 129);
 }
 #input:focus {
-background-image: linear-gradient(to left, rgba(222, 222, 222, 0.588), rgba(81, 81, 81, 0.691));
+color: #000000;
+background-color: #9b9b9b;
+}
+#input:focus::placeholder {
+color: #000000;
+border: none;
 }
 #sites {
 display: flex;
@@ -135,28 +142,32 @@ border: solid black 3px;
 min-width: 40px;
 max-width: 80px;
 margin-left: 5px;
-margin-bottom: 0 !important;
+margin-top: 3px;
 border-radius: 7px;
-height: 56px;
-font-size: 20px;
+height: 50px;
 background: transparent;
+font-size: 20px;
 border: none;
+}
+#sear {
+cursor: pointer;
 }
 #list {
 display: flex;
 flex-direction: column;
 gap: 5px;
 list-style: square;
-background-color: rgb(177, 177, 177);
+padding: 5px;
+background-color: #1f1f1f;
+color: #ffffff;
 max-width: 100px;
 border-radius: 5px;
-transition: transform 0.4s ease, opacity 0.4s ease, visibility 0.5s ease, background-color 0.3s ease, box-shadow 0.3s ease;
+transition: transform 0.3s ease, opacity 0.4s ease, visibility 0.5s ease, background-color 0.3s ease, box-shadow 0.3s ease;
 transform: translateX(0);
 min-width: 150px;
 width: auto;
 height: auto;
 &:hover {
-background-color: #9c9c9c;
 box-shadow: 7px 5px 10px rgba(0, 0, 0, 0.8);
 }
 }
@@ -173,22 +184,39 @@ flex-wrap: wrap;
 #Theme {
 border-radius: 7px;
 margin-bottom: 5px;
-background-color: #eaeaea;
 transition: all 0.3s ease;
-border: solid black 2px;
-&:active {
-background-color: #a8a8a8;
-color: white;
+}
+button {
+  border: none;
+  height: 24px;
+  border-radius: 30px;
+  background: rgb(0, 122, 255);
+  transition: all 0.8s ease;
+&:hover {
+background-color: #5ac8fa;
 }
 }
 #menu {
-background: transparent !important;
-border: none;
-transition: all 0.5s ease;
-cursor: pointer;
-&:active {
-transform: rotate(360deg);
+  /* 1. Полностью сбрасываем стили кнопки */
+  padding: 0;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+
+  width: 60px;
+  height: 60px;
 }
+
+#menu img {
+  width: 100%;
+  height: 100%;
+  transition: all 0.3s ease;
+  transform-origin: center center; /* 🔑 Ось вращения ровно по центру картинки */
+}
+
+/* 3. Вращаем картинку при нажатии */
+#menu:active img {
+  transform: rotate(360deg);
 }
 #menuDiv {
 position: fixed;
@@ -215,6 +243,7 @@ min-width: 70px;
 min-height: 20px;
 }
 #clockLabel {
+color: #ffffff;
 text-align: center;
 font-size: 24px;
 font-weight: 500;
@@ -243,6 +272,16 @@ max-width: 450px;
 border-radius: 15px;
 text-align: center;  
 padding: auto;
+}
+.profile {
+position: absolute;
+right: 8px;
+top: 8px;
+border-radius: 7px;
+border: none;
+width: 100px;
+height: 40px;
+background-color: #99c3ff;
 }
 @media(max-width: 780px) {
 #time {
@@ -287,6 +326,7 @@ font-size: 18px;
 }
 #sear {
 width: 35px;
+cursor: pointer;
 height: 35px;
 }
 #list {
@@ -303,9 +343,9 @@ min-width: 250px;
     }
 }
 #dateLabel {
+color: #ffffff;
 text-align: center;
 font-size: 24px;
-font-weight: 500;
 }
 .switcher {
 position: relative;
