@@ -1,5 +1,6 @@
 GABY BROWSER
 Современный браузер с встроенным искусственным интеллектом для быстрого поиска и удобной работы с информацией.
+
 ОСНОВНЫЕ ВОЗМОЖНОСТИ:
   Умный поиск через Serper API с мгновенной выдачей результатов и иконками сайтов
   Встроенный ИИ-ассистент на базе Ollama (модель Qwen 2.5) для ответов на вопросы прямо в интерфейсе
@@ -7,11 +8,21 @@ GABY BROWSER
   Горячие клавиши: Ctrl+R (обновить), Ctrl+W (закрыть вкладку), Alt+стрелки (назад/вперёд), Enter (поиск)
   Адаптивный дизайн с тёмной и светлой темой, плавными анимациями и виджетом часов/даты
   Сохранение состояния, последних запросов и настроек через LocalStorage
-  ТЕХНОЛОГИИ:
+  
+ТЕХНОЛОГИИ:
 HTML5, CSS3, JavaScript (ES6+), Serper API, Ollama API, LocalStorage, AbortController
+
 ПЛАНЫ НА РАЗВИТИЕ:
+
   Desktop-версия на Electron или Tauri с нативным менеджером загрузок
   Глобальные горячие клавиши и работа в системном трее
   Поддержка пользовательских расширений и тем оформления
   ссылка на веб версию: https://gaby-web-nine.vercel.app/
   автор: https://github.com/banerlung
+  
+Главная страница: <img width="1903" height="937" alt="image" src="https://github.com/user-attachments/assets/db35ed39-bee1-4476-8c05-f383d32e2d99" />
+Меню поиска: <img width="1903" height="925" alt="image" src="https://github.com/user-attachments/assets/16e190ff-7d18-4dcb-9382-7263196b4d2d" />
+
+Ссылки на обратную связь:
+ Mail: banerlung@gmail.com
+ Telegramm: @banerlung
