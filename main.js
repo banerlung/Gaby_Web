@@ -1,17 +1,20 @@
-const tools = document.getElementById("tools"); //кнопка для появления инструментов
+const tools = document.getElementById("tools"); //инструменты
 const group = document.getElementById("group"); // ссекция с инструментами
-let input = document.getElementById("input"); // главный инпут на странице
-let result = document.getElementById("result"); // кнопка поиска
-let MenuButton = document.getElementById("menu");  //кнопка настроек
-let list = document.getElementById("list"); // лист настроек
-let time = document.getElementById("time"); // часы
-let chTime = document.getElementById("clock"); // чекбокс часов
-let date = document.getElementById("date"); //дата
-let chDate = document.getElementById("chDate"); // чекбокс для даты
-tools.onclick = function() {
-    group.classList.toggle("скрыт"); // при нажатии меняем появления инструментов
+const input = document.getElementById("input"); // главный input на странице
+const result = document.getElementById("result"); // кнопка поиска
+const MenuButton = document.getElementById("menu");  //кнопка настроек
+const list = document.getElementById("list"); //настройки
+const time = document.getElementById("time"); // часы
+const chTime = document.getElementById("clock"); // чекбокс часов
+const date = document.getElementById("date"); //дата
+const chDate = document.getElementById("chDate"); // checkbox для даты
+const chCurs = document.getElementById("chCurs"); //checkbox для часов
+const Theme = document.getElementById("Theme"); // кнопка смены темы
+const curs = document.getElementById("curses"); //checkbox для курсов
+tools.onclick = function() { //функция показа инструментов
+    group.classList.toggle("скрыт");
 };
-function openSite() {
+function openSite() { //функция открытия сайта, либо поиска
     let query = input.value.trim();
     if (!query) return;
     
@@ -24,7 +27,7 @@ function openSite() {
     }
 }
 result.onclick = openSite;
-input.addEventListener('keydown', (e) => {
+input.addEventListener('keydown', (e) => { //при нажатии Enter выполняется поиск
     if(e.key === 'Enter') {
         e.preventDefault();
         openSite()
@@ -33,7 +36,6 @@ input.addEventListener('keydown', (e) => {
 MenuButton.onclick = function() {
     list.classList.toggle('hidden');
 }
-let Theme = document.getElementById("Theme");
 Theme.onclick = function() {
 document.body.classList.toggle("темная")
 if (document.body.classList.contains('темная')) {
@@ -42,13 +44,13 @@ if (document.body.classList.contains('темная')) {
         localStorage.setItem('savedTheme', 'light');
     }
 };
-let currentTheme = localStorage.getItem('savedTheme');
+const currentTheme = localStorage.getItem('savedTheme'); //сохранение темы
 if (currentTheme === 'dark') {
     document.body.classList.add('темная');
 } else {
     document.body.classList.remove('темная');
 }
-function Time() {
+function Time() { //время
     let now = new Date(); 
     let hours = now.getHours();
     let minutes = now.getMinutes(); 
@@ -78,10 +80,22 @@ function toggleDate() {
         
     }
 };
+function toggleCurs() {
+    if(chCurs.checked) {
+         curs.style = 'text-align: center;font-size: 18px;height: auto; opacity: 1; padding: 0;margin: 0;transition: all 0.4s ease;'
+    } else {
+        curs.style = 'text-align: center; font-size: 18px; height: auto; opacity: 0; padding: 0;margin: 0; transition: all 0.4s ease;'
+        
+    }
+};
 toggleClockVisibility();
 toggleDate();
+toggleCurs();
 if (chDate) {
     chDate.addEventListener('change', toggleDate);
+}
+if (chCurs) {
+    chCurs.addEventListener('change', toggleCurs);
 }
 if (chTime) {
     chTime.addEventListener('change', toggleClockVisibility);
@@ -96,28 +110,18 @@ function getDate() {
     date.textContent = `${day}.${mounth}.${year}`;
 }
 getDate();
-async function loadRates() {
+async function loadCurrency() {
   try {
-    const res = await fetch('https://api.exchangerate.host/latest?base=RUB&symbols=USD,EUR,CNY');
-    const data = await res.json();
-    
-    const rates = data.rates;
-    const el = document.getElementById('rates');
-    
-    if (el && rates) {
-      el.innerHTML = `
-        $ ${rates.USD?.toFixed(2) || '—'} | 
-        € ${rates.EUR?.toFixed(2) || '—'} | 
-        ¥ ${rates.CNY?.toFixed(2) || '—'}
-      `;
-    }
+
+const res = await fetch('https://api.exchangerate-api.com/v4/latest/USD');
+const data = await res.json();
+const eur = data.rates.RUB / data.rates.EUR
+curs.textContent = "$ " + data.rates.RUB + " € " + eur.toFixed(2);
   } catch (e) {
-    console.log('Курсы не загрузились:', e);
-    const el = document.getElementById('rates');
-    if (el) el.textContent = '—';
+    console.warn('Курсы не загрузились:', e);
   }
 }
 document.addEventListener('DOMContentLoaded', () => {
-  loadRates();
-  setInterval(loadRates, 10 * 60 * 1000);
+  loadCurrency();
+  setInterval(loadCurrency, 10 * 60 * 1000);
 });

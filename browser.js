@@ -1,13 +1,32 @@
-let site = localStorage.getItem("SearchQuery");
-let back = document.getElementById("back");
-let search2 = document.getElementById("search");
-let inputSearch = document.getElementById("urlAdress");
-let divSites = document.getElementById("sites");
-let start = document.getElementById("start");
+const site = localStorage.getItem("SearchQuery"); //url сайта с поиска
+const back = document.getElementById("back"); //кнопка назад
+const searchBtn = document.getElementById("search"); //кнопка поиска
+const inputSearch = document.getElementById("urlAdress"); //input поиска
+const divSites = document.getElementById("sites"); //сайты
+const start = document.getElementById("start"); //стартовый iframe
 start.src = site;
-let active = [];
-let max = 12;
-search2.onclick = function() {
+let active = []; //активные вкладки
+let max = 12; //максимальное количество вкладок
+if (back) {
+    back.onclick = function() { history.back(); };
+}
+
+const reload = document.getElementById("reload");
+if (reload) {
+    reload.onclick = function() { location.reload(); };
+}
+
+const forward = document.getElementById("forward");
+if (forward) {
+    forward.onclick = function() { history.forward(); };
+}
+const homeBtn = document.getElementById("Home");
+if (homeBtn) {
+    homeBtn.onclick = function() { 
+        open("index.html"); 
+    };
+}
+searchBtn.onclick = function() {
     let url = inputSearch.value;
     inputSearch.value = null;
     if (!url) return;
@@ -40,7 +59,7 @@ search2.onclick = function() {
     }
     
 };
-document.addEventListener("keydown", (e) => {
+document.addEventListener("keydown", (e) => { //бета
     if (e.ctrlKey && e.key.toLowerCase() === 'w') {
         e.preventDefault();
         iframe.remove();
@@ -59,18 +78,4 @@ document.addEventListener("keydown", (e) => {
     btn.style = "border: solid 3px white"
     activeFrame.style.display = 'block';
 };
-back.onclick = function() {
-history.back();
-}
-let reload = document.getElementById("reload");
-reload.onclick = function reload() {
-location.reload();
-}
-let forward = document.getElementById("forward");
-forward.onclick = function() {
-    history.forward();
-}
-let Home = document.getElementById("Home");
-Home.onclick = function() {
-    open("index.html")
-}
+

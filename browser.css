@@ -1,7 +1,9 @@
+@import url('https://fonts.googleapis.com/css2?family=Onest:wght@400;500;700&display=swap');
 * {
 margin: 0;
-font-family: 'Plus Jakarta Sans', sans-serif;
+font-family: 'Onest', sans-serif;
 padding: 0;
+transition: all 0.3s ease;
 }
 .window {
 width: 100vw;
@@ -10,6 +12,10 @@ margin: 0;
 border: none;
 }
 #url {
+position: absolute;
+left: 0;
+right: 0;
+top: 50px;
 display: flex;
 flex-direction: row;
 gap: 5px;
@@ -17,26 +23,26 @@ align-items: center;
 justify-content: center;
 }
 #urlAdress {
-margin-top: 15px;
 width: 900px;
 height: 30px;
+padding-left: 10px;
 border: none;
-border-radius: 7px;
-background-color: rgb(150, 150, 150);
+border-radius: 13px;
+background-color: #585858;
 font-size: 24px;
-margin-top: 0 !important;
-border: solid black 2px;
-color: black;
+&::placeholder {
+color: #bebebe;
 }
-header {
+}
+#header {
 position: sticky;
-border-bottom: solid black 10px;
+border-bottom: solid black 5px;
+z-index: 999;
 height: 10vh;
 background-color: rgb(255, 255, 255);
 color: black;
-transition: all 0.3s ease;
 }
-header.dark {
+#header.dark {
 background-color: rgb(123, 123, 123);
 color: white;
 }
@@ -49,16 +55,20 @@ flex-direction: row;
 #search {
 position: absolute;
 left: 1370px;
-transition: all 0.3s ease;
+
 background: transparent;
 border: none;
 }
 h1 {
 text-align: center;
 }
-#Home {
-
-transition: all 0.3s ease;
+button {
+min-width: 40px;
+min-height: 20px;
+max-width: 70px;
+max-height: 40px;
+background: transparent;
+border: none;
 }
 #back {
 min-width: 60px;
@@ -67,25 +77,6 @@ max-width: 70px;
 max-height: 40px;
 background: transparent;
 border: none;
-transition: all 0.3s ease;
-}
-#reload {
-min-width: 40px;
-min-height: 20px;
-max-width: 70px;
-max-height: 40px;
-background: transparent;
-border: none;
-transition: all 0.3s ease;
-}
-#forward {
-min-width: 40px;
-min-height: 20px;
-max-width: 70px;
-max-height: 40px;
-background: transparent;
-border: none;
-transition: all 0.3s ease;
 }
 iframe {
 background-color: rgb(72, 72, 72);
@@ -114,7 +105,7 @@ transition: all 0.5s ease;
 cursor: pointer;
 }
 .site {
-width: auto;
+min-width: 150px;
 border: solid black 3px;
 border-radius: 7px;
 background-color: rgb(107, 107, 107);
@@ -127,18 +118,18 @@ margin-left: 0;
 #urlAdress {
 position: absolute;
 right: 5px;
-top: 35px;
 font-size: 14px;
-width: 150px;
+width: 200px;
 height: 20px;
 }
 #sites {
 height: 30px;
 }
 #search {
-position: absolute;
-top: 35px;
-right: 0;
+top: -11px;
+margin: 0;
+padding: 0;
+left: 383px;
 }
 #header {
 height: 30px;
@@ -148,6 +139,7 @@ position: sticky;
 }
 #buttons {
 display: flex;
+z-index: 999;
 gap: 5px;
 margin-top: 0;
 flex-direction: row;

@@ -1,22 +1,24 @@
 @import url('https://fonts.googleapis.com/css2?family=Onest:wght@400;500;700&display=swap');
 * {
 transition: all 0.3s ease;
-color: #ffffff;
-font-family: 'Onest', sans-serif;
+font-family: 'Onest', 'sans-serif';
+margin: 0;
+padding: 0;
+box-sizing: border-box;
 }
 body {
 font-family: 'Courier New', Courier, monospace;
 min-height: 100vh;
-background-color: #ffffff;
-color: black;
+background-color: #f4f4f6;
+color: #000000;
 transition: all 0.6s ease;
 overflow-x: hidden;
 margin: 0;
 padding: 0;
 }
 .темная {
-background-color: #3c3c3c;
-color: rgb(231, 231, 231); 
+background-color: #1a1a1d;
+color: #ffffff; 
 }
 .скрыт {
 height: 0 !important;
@@ -60,15 +62,6 @@ transition: transform 0.3s ease, opacity 0.8s ease, visibility 0.8s ease, backgr
 #group:hover {
 background-color: rgb(95, 95, 95)y;
 }
-#tools {
-margin-top: 5px;
-margin-bottom: 0;
-max-width: 150px;
-border-radius: 6px;
-&:active {
-color: white;
-}
-}
 #search {
 display: flex;
 flex-direction: column;
@@ -78,31 +71,24 @@ text-align: center;
 padding: 10px;
 margin: 60px auto 0 auto;
 color: white;
-border: solid 2px #000000;
-box-shadow: 5px 2px 10px rgba(0, 0, 0, 0.8);
 max-width: 600px;
 border-radius: 15px;
 }
 #input {
-width: 500px;
+width: 700px;
 height: 50px;
 font-size: 24px;
-background-color: rgb(179, 179, 179);
+background-color: #2a2a2f;
+outline: none;
+padding-left: 25px;
 overflow: scroll;
-border-radius: 10px;
+border-radius: 22px;
 border: none;
+color: #6e6e78;
 transition: transform 0.3s ease, background-color 0.3s ease;
 }
-#input:hover {
-background-color: rgb(129, 129, 129);
-}
-#input:focus {
-color: #000000;
-background-color: #9b9b9b;
-}
-#input:focus::placeholder {
-color: #000000;
-border: none;
+#input::placeholder {
+color: #6e6e78;
 }
 #sites {
 display: flex;
@@ -138,19 +124,21 @@ h1 {
 font-family: Oswald;
 }
 #result {
-border: solid black 3px;
-min-width: 40px;
-max-width: 80px;
-margin-left: 5px;
-margin-top: 3px;
-border-radius: 7px;
+display: flex;
+align-items: center;
+justify-content: center;
+width: 50px;
 height: 50px;
-background: transparent;
+position: absolute;
+left: 1320px;
+background: #2a2a2f;
+border-radius: 50%;
 font-size: 20px;
 border: none;
 }
-#sear {
-cursor: pointer;
+.svgS {
+height: 25px;
+width: 25px;
 }
 #list {
 display: flex;
@@ -158,7 +146,7 @@ flex-direction: column;
 gap: 5px;
 list-style: square;
 padding: 5px;
-background-color: #1f1f1f;
+background-color: #2a2a2f;
 color: #ffffff;
 max-width: 100px;
 border-radius: 5px;
@@ -181,19 +169,17 @@ display: flex;
 flex-direction: row;
 flex-wrap: wrap;
 }
-#Theme {
-border-radius: 7px;
-margin-bottom: 5px;
-transition: all 0.3s ease;
-}
 button {
-  border: none;
-  height: 24px;
-  border-radius: 30px;
-  background: rgb(0, 122, 255);
-  transition: all 0.8s ease;
+border: none;
+height: 24px;
+border-radius: 9px;
+background: #7A7A7A;
+color: #ffffff;
+transition: all 0.8s ease;
 &:hover {
-background-color: #5ac8fa;
+background-color: #4d4d4d;
+transition: all 0.2s ease;
+transform: scale(102%);
 }
 }
 #menu {
@@ -245,21 +231,16 @@ min-height: 20px;
 #clockLabel {
 color: #ffffff;
 text-align: center;
-font-size: 24px;
+font-size: 18px;
 font-weight: 500;
 }
-#date {
-text-align: center;
-font-size: 32px;
-height: auto;
-padding: 0;
-margin: 0;
-transition: all 0.4s ease !important;
-}
 #gaby {
-text-align: center;
-font-size: 42px;
-font-weight: 300;
+    font-family: 'Onest', 'sans-serif';
+    font-size: 3.6rem;
+    font-weight: 700;
+    text-align: center;
+    cursor: default;
+    user-select: none;
 }
 #informatiion {
 display: flex;
@@ -282,6 +263,10 @@ border: none;
 width: 100px;
 height: 40px;
 background-color: #99c3ff;
+}
+#cursLabel {
+font-size: 14px;
+text-align: left;
 }
 @media(max-width: 780px) {
 #time {
@@ -317,11 +302,9 @@ font-size: 24px;
     }
 #result {
 position: absolute;
-right: 25px;
+left: 370px;
 min-width: 50px;
 max-width: 70px;
-margin-left: 3px;
-height: 48px;
 font-size: 18px;
 }
 #sear {
@@ -345,17 +328,17 @@ min-width: 250px;
 #dateLabel {
 color: #ffffff;
 text-align: center;
-font-size: 24px;
+font-size: 18px;
 }
 .switcher {
 position: relative;
-margin: 0;
 width: 50px;
+padding: 2px;
+float: right;
 height: 24px;
 border-radius: 20px;
-background-color: #636363;
+background-color: #8f8f96;
 appearance: none;
-border: solid black 2px;
 transition: all 0.3s ease;
 }
 .switcher:checked {
@@ -366,14 +349,14 @@ transition: all 0.3s ease;transition: all 0.3s ease;
 content: "";
 transition: all 0.3s ease;
 position: absolute;
-top: -1px;
 width: 23px;
+top: 1px;
 height: 22px;
 border-radius: 50%;
 background-color: #ffffff;
 }
 .switcher:checked::before {
-transform: translateX(23px);
+transform: translateX(25px);
 transition: all 0.3s ease;
 }
 #weatherLabel {

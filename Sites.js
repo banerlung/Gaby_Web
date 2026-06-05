@@ -1,7 +1,7 @@
-let search = localStorage.getItem("SearchQuery");
-let input = document.getElementById("input");
-let searchBtn = document.getElementById("search");
-function SiteOrUrl(url) {
+let search = localStorage.getItem("SearchQuery"); //результат поиска
+let input = document.getElementById("input"); //главный input на странице
+let searchBtn = document.getElementById("search"); //кнопка поиска
+function SiteOrUrl(url) { // функция для проверки сайт или ссылка
     if(url.includes("http:/") || url.includes("https:/")) {
         localStorage.setItem("resultSearch", url);
         window.open("browser.html");
@@ -12,19 +12,19 @@ function SiteOrUrl(url) {
 searchBtn.onclick = function() {
 SiteOrUrl(input.value);
 }
-input.addEventListener('keydown', (e) => {
+input.addEventListener('keydown', (e) => { // при нажатии Enter выполнится поиск
     if(e.key === 'Enter') {
         e.preventDefault();
         SiteOrUrl(input.value)
 }
 });
-document.addEventListener("keydown", (e) => {
+document.addEventListener("keydown", (e) => { //при нажатии ctrl r страница перезагрузится
       if (e.ctrlKey && e.key.toLowerCase() === 'r') {
     e.preventDefault();
     location.reload();
   }
 })
-function home() {
+function home() { //главная страница
     window.open("index.html", target = "_self");
 };
 if(!search) {
@@ -35,7 +35,7 @@ document.addEventListener('DOMContentLoaded', () => {
     ShowSites(search);
     input.value = search;
 })
-async function ShowSites(urlSite) {
+async function ShowSites(urlSite) { //главная функция отрисовки сайтов и ответа от ии
     try {
     const API = "ad9f8d9e56c377337213506262d2f698e1a01625";
     const searxInstance = 'https://search.sapti.me'; 
@@ -49,8 +49,8 @@ async function ShowSites(urlSite) {
             },
             body: JSON.stringify({ 
                 q: urlSite, 
-                gl: 'ru',   // Россия
-                hl: 'ru'    // Русский язык
+                gl: 'ru',
+                hl: 'ru',
             })
         });
         const AiDiv = document.getElementById("AI");
@@ -90,6 +90,6 @@ async function ShowSites(urlSite) {
             }
         });
     } catch(error) {
-        console.error("Ошибка:" + error);
+        console.error("Ошибка, мы работаем над эти, служба поддержки: banerlung@gmail.com " + error);
     };
 };

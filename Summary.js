@@ -1,10 +1,13 @@
+let controller = null;
 async function Summary(query) {
   try {
-    const controller = new AbortController();
-    const res = await fetch('https://14e7b869-1833-4ff3-bd61-43a7ed22eb36.tunnel4.com/api/generate', {
+    if(controller) {
+      controller.abort()
+    }
+    controller = new AbortController();
+    const res = await fetch('http://localhost:11434/api/generate', {
       method: 'POST',
-      controller: controller.signal,
-      headers: { 'Content-Type': 'application/json' },
+      headers: { 'Content-Type': 'application/json',},
       body: JSON.stringify({
         model: 'qwen2.5:14b',
         prompt: `Вы — Gaby AI программный модуль разметки знаний, встроенный в браузер. Вы помогаете пользователям найти информацию или определить термины. Выдавайте высокоинформативные ответы с максимальной плотностью данных.
@@ -85,26 +88,8 @@ const even = nums.filter(n => n % 2 === 0);</code></pre>
     return '<p>Ошибка связи с ИИ. Убедись, что Ollama запущена с разрешением CORS.</p>';
   }
 }
-
-document.addEventListener('DOMContentLoaded', () => {
-  const btn = document.getElementById('searchB');
-  const input = document.getElementById('input');
-  const output = document.getElementById('AI');
-
-  if (btn && input && output) {
-    btn.onclick = async () => {
-      const query = input.value.trim();
-      if (!query) return;
-
-      output.innerHTML = '<span style="color:#ccc">Думаю...</span>';
-      
-      const answerText = await Summary(query);
-      
-      output.innerHTML = `
-        <div style="animation: fadeIn 0.5s;">
-          <div style="line-height: 1.5; color: white;">${answerText}</div>
-        </div>
-      `;
-    };
+window.addEventListener('beforeunload', () => {
+  if (aiController) {
+    aiController.abort();
   }
 });
