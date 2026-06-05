@@ -24,5 +24,5 @@ HTML5, CSS3, JavaScript (ES6+), Serper API, Ollama API, LocalStorage, AbortContr
 Меню поиска: <img width="1903" height="925" alt="image" src="https://github.com/user-attachments/assets/16e190ff-7d18-4dcb-9382-7263196b4d2d" />
 
 Ссылки на обратную связь:
- Mail: banerlung@gmail.com
+ Mail: gabyWhelp@gmail.com
  Telegramm: @banerlung
