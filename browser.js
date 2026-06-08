@@ -7,15 +7,12 @@ const start = document.getElementById("start"); //стартовый iframe
 start.src = site;
 let active = []; //активные вкладки
 let max = 12; //максимальное количество вкладок
+if(active.length <= 0) {
+    divSites.style.display = "none"
+}
 if (back) {
     back.onclick = function() { history.back(); };
 }
-
-const reload = document.getElementById("reload");
-if (reload) {
-    reload.onclick = function() { location.reload(); };
-}
-
 const forward = document.getElementById("forward");
 if (forward) {
     forward.onclick = function() { history.forward(); };
@@ -28,6 +25,7 @@ if (homeBtn) {
 }
 searchBtn.onclick = function() {
     let url = inputSearch.value;
+    divSites.style.display = "block";
     inputSearch.value = null;
     if (!url) return;
     if (active.length < max) {
@@ -35,7 +33,11 @@ searchBtn.onclick = function() {
         let close = document.createElement('span');
         let spanText = document.createElement('span');
         let iframe = document.createElement("iframe");
+        let icon = document.createElement("img");
+        icon.src = `https://www.google.com/s2/favicons?domain=${url}`;
+        icon.classList.add('icon');
         site2.classList.add('site');
+        site2.appendChild(icon);
         site2.appendChild(spanText);
         site2.appendChild(close);
         spanText.innerText = url;
@@ -51,6 +53,14 @@ searchBtn.onclick = function() {
         };
 
         close.onclick = function(e) {
+             const index = active.indexOf(site2.textContent);
+             if (index !== -1) {
+                active.splice(index, 1);  // удаляем из массива
+             }
+             if(active.length <= 0) {
+                divSites.style.display = "none"
+                iframe.src = "https://elgoog.im"
+            }
             iframe.remove();
             site2.remove();
         };
@@ -59,13 +69,6 @@ searchBtn.onclick = function() {
     }
     
 };
-document.addEventListener("keydown", (e) => { //бета
-    if (e.ctrlKey && e.key.toLowerCase() === 'w') {
-        e.preventDefault();
-        iframe.remove();
-        site2.remove();
-    }
-})
     function showTab(btn, activeFrame) {
     let allFrames = document.querySelectorAll('.window');
     for (let i = 0; i < allFrames.length; i++) {

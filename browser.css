@@ -1,168 +1,213 @@
 @import url('https://fonts.googleapis.com/css2?family=Onest:wght@400;500;700&display=swap');
+
 * {
-margin: 0;
-font-family: 'Onest', sans-serif;
-padding: 0;
-transition: all 0.3s ease;
+    margin: 0;
+    font-family: 'Onest', sans-serif;
+    padding: 0;
+    border: none;
+    transition: all 0.3s ease;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: #1a1a1d;
+    overflow: hidden;
 }
 .window {
-width: 100vw;
-height: 90vh;
-margin: 0;
-border: none;
+    width: 100%;
+    height: calc(100vh - 80px);
+    margin: 0;
+    border: none;
+    background-color: #1a1a1d;
+    display: block;
+    position: relative;
 }
-#url {
-position: absolute;
-left: 0;
-right: 0;
-top: 50px;
-display: flex;
-flex-direction: row;
-gap: 5px;
-align-items: center;
-justify-content: center;
-}
-#urlAdress {
-width: 900px;
-height: 30px;
-padding-left: 10px;
-border: none;
-border-radius: 13px;
-background-color: #585858;
-font-size: 24px;
-&::placeholder {
-color: #bebebe;
-}
-}
-#header {
-position: sticky;
-border-bottom: solid black 5px;
-z-index: 999;
-height: 10vh;
-background-color: rgb(255, 255, 255);
-color: black;
-}
-#header.dark {
-background-color: rgb(123, 123, 123);
-color: white;
-}
-#buttons {
-display: flex;
-gap: 5px;
-margin-top: 5px;
-flex-direction: row;
-}
-#search {
-position: absolute;
-left: 1370px;
 
-background: transparent;
-border: none;
+#header {
+    position: sticky;
+    top: 0;
+    width: 100%;
+    background-color: #1a1a1d;
+    color: white;
+    z-index: 1000;
+    padding-bottom: 5px;
 }
-h1 {
-text-align: center;
-}
-button {
-min-width: 40px;
-min-height: 20px;
-max-width: 70px;
-max-height: 40px;
-background: transparent;
-border: none;
-}
-#back {
-min-width: 60px;
-min-height: 30px;
-max-width: 70px;
-max-height: 40px;
-background: transparent;
-border: none;
-}
-iframe {
-background-color: rgb(72, 72, 72);
-}
-#sites{
-display: flex;
-justify-content: left;
-flex-direction: row;
-border-bottom: solid black 3px;
-width: auto;
-height: 40px;
-gap: 5px;
-background-color: rgb(74, 74, 74);
-}
-.sites {
-background-color: rgb(107, 107, 107);
-border-radius: 7px;
-}
-#plus {
-width: 50px;
-height: 50px;
-margin: 0;
-background: transparent !important;
-border: none;
-transition: all 0.5s ease;
-cursor: pointer;
-}
-.site {
-min-width: 150px;
-border: solid black 3px;
-border-radius: 7px;
-background-color: rgb(107, 107, 107);
-}
-.close {
-margin-top: 0;
-margin-left: 0;
-}
-@media(max-width: 780px) {
-#urlAdress {
-position: absolute;
-right: 5px;
-font-size: 14px;
-width: 200px;
-height: 20px;
-}
+
 #sites {
-height: 30px;
-}
-#search {
-top: -11px;
-margin: 0;
-padding: 0;
-left: 383px;
-}
-#header {
-height: 30px;
-background: transparent;
-border: none;
-position: sticky;
-}
-#buttons {
-display: flex;
-z-index: 999;
-gap: 5px;
-margin-top: 0;
-flex-direction: row;
-}
-#Home {
-min-width: 30px;
-min-height: 10px;
-max-width: 60px;
-max-height: 30px;
-transition: all 0.3s ease;
-}
-#back {
-border: none;
-min-width: 60px;
-min-height: 30px;
-max-width: 70px;
-max-height: 40px;
-}
-#reload {
-min-width: 40px;
-min-height: 20px;
-max-width: 70px;
-max-height: 40px;
+    display: flex;
+    align-items: center;
+    overflow-x: auto;
+    white-space: nowrap;
+    gap: 6px;
+    padding: 5px 10px;
+    height: 48px;
+    background-color: #1a1a1d;
+    scrollbar-width: thin;
+    border-bottom: 1px solid #2a2a2f;
 }
 
+/* Адресная панель: кнопки → инпут → кнопка поиска */
+#url {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 8px;
+    margin: 5px 10px;
+}
+
+/* Кнопки навигации (слева) */
+#buttons {
+    display: flex;
+    gap: 6px;
+    flex-direction: row;
+    flex-shrink: 0;
+}
+
+/* Поле ввода (растягивается) */
+#urlAdress {
+    flex: 1;
+    min-width: 200px;
+    height: 40px;
+    padding-left: 20px;
+    border: none;
+    border-radius: 30px;
+    background-color: #2a2a2f;
+    font-size: 16px;
+    color: #e8e8ec;
+    outline: none;
+}
+
+#urlAdress::placeholder {
+    color: #6e6e78;
+}
+
+/* Кнопка поиска (справа) */
+#search {
+    background: #2a2a2f;
+    border: none;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    flex-shrink: 0;
+}
+
+#search:hover {
+    background-color: #4d4d4d;
+    transform: scale(1.05);
+}
+
+#search:active {
+    transform: scale(0.98);
+}
+
+#search svg {
+    width: 22px;
+    height: 22px;
+    filter: invert(1);
+}
+
+/* Стили кнопок навигации */
+#back, #forward, #reload, #Home {
+    background: transparent;
+    border: none;
+    border-radius: 50%;
+    width: 36px;
+    height: 36px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s ease;
+    cursor: pointer;
+}
+
+#back:hover, #forward:hover, #reload:hover, #Home:hover {
+    background-color: #2a2a2f;
+    transform: scale(1.05);
+}
+
+#back:active, #forward:active, #reload:active, #Home:active {
+    transform: scale(0.95);
+}
+
+#back img, #forward img, #reload img, #Home img {
+    width: 20px;
+    height: 20px;
+    filter: invert(1);
+}
+
+/* Вкладки */
+.site {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    background-color: #2a2a2f;
+    border-radius: 20px;
+    padding: 4px 12px 4px 16px;
+    height: 32px;
+    color: #e8e8ec;
+    font-size: 13px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    white-space: nowrap;
+}
+
+.site:hover {
+    background-color: #4d4d4d;
+    transform: translateY(-1px);
+}
+
+.close {
+    background: transparent;
+    color: #e8e8ec;
+    font-size: 18px;
+    font-weight: bold;
+    width: 20px;
+    height: 20px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    margin-left: 6px;
+}
+
+.close:hover {
+    background-color: #ff4444;
+    color: white;
+    transform: scale(1.1);
+}
+
+/* Адаптив */
+@media (max-width: 780px) {
+    .window {
+        height: calc(100vh - 120px);
+    }
+
+    #url {
+        gap: 6px;
+    }
+
+    #urlAdress {
+        font-size: 14px;
+        height: 36px;
+        min-width: 120px;
+    }
+
+    #search {
+        width: 36px;
+        height: 36px;
+    }
+
+    #back, #forward, #reload, #Home {
+        width: 32px;
+        height: 32px;
+    }
+
+    #sites {
+        height: 40px;
+    }
 }

@@ -235,12 +235,22 @@ font-size: 18px;
 font-weight: 500;
 }
 #gaby {
-    font-family: 'Onest', 'sans-serif';
-    font-size: 3.6rem;
-    font-weight: 700;
-    text-align: center;
-    cursor: default;
-    user-select: none;
+font-family: 'Onest', 'sans-serif';
+font-size: 3.6rem;
+font-weight: 700;
+text-align: center;
+cursor: default;
+user-select: none;
+}
+footer {
+position: absolute;
+text-align: center;
+left: 0;
+right: 0;
+bottom: 0;
+}
+a {
+color: #ffffff;
 }
 #informatiion {
 display: flex;
@@ -342,7 +352,7 @@ appearance: none;
 transition: all 0.3s ease;
 }
 .switcher:checked {
-background-color: #007ed8;
+background-color: #c5882d;
 transition: all 0.3s ease;transition: all 0.3s ease;
 }
 .switcher::before {

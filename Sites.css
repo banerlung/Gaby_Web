@@ -5,8 +5,9 @@ font-family: 'Onest', sans-serif;
 transition: all 0.3s ease;
 }
 body {
-background-color: rgb(34, 36, 42);
-}
+background-color: #1a1a1d;
+height: 100vh;
+} 
 .result {
 position: relative;
 margin-bottom: 25px;
@@ -43,6 +44,7 @@ color: #bdc1c6;
 text-decoration: none;
 display: block;
 margin-bottom: 5px;
+word-wrap: break-word;
 word-break: break-all;
 }
 .result .img {
@@ -91,12 +93,35 @@ border: none;
 }
 }
 #search {
-position: absolute;
-left: 920px;
-padding: 0;
-margin: 0;
-top: 15px;
-cursor: pointer;
+    position: absolute;
+    top: 5px;
+    left: 1000px;
+    background: #2a2a2f;
+    border: none;
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    flex-shrink: 0;
+}
+
+#search:hover {
+    background-color: #4d4d4d;
+    transform: scale(1.05);
+}
+
+#search:active {
+    transform: scale(0.98);
+}
+
+#search svg {
+    width: 30px;
+    height: 30px;
+    filter: invert(1);
 }
 #searchD {
 display: flex;

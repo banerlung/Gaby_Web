@@ -11,6 +11,7 @@ const chDate = document.getElementById("chDate"); // checkbox для даты
 const chCurs = document.getElementById("chCurs"); //checkbox для часов
 const Theme = document.getElementById("Theme"); // кнопка смены темы
 const curs = document.getElementById("curses"); //checkbox для курсов
+const svg = document.getElementsByClassName("svg");
 tools.onclick = function() { //функция показа инструментов
     group.classList.toggle("скрыт");
 };
@@ -47,8 +48,10 @@ if (document.body.classList.contains('темная')) {
 const currentTheme = localStorage.getItem('savedTheme'); //сохранение темы
 if (currentTheme === 'dark') {
     document.body.classList.add('темная');
+    svg.fill = "#ffffff"
 } else {
     document.body.classList.remove('темная');
+    svg.fill = "#000000"
 }
 function Time() { //время
     let now = new Date(); 
