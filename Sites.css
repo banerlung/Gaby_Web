@@ -162,8 +162,8 @@ background-color: #213da0;
 padding-bottom: 10px;
 }
 #search {
-height: 35px;
-width: 35px;
+height: 33px;
+width: 33px;
 left: 380px;
 top: 5px;
 }
@@ -176,7 +176,7 @@ margin-top: 55px;
 margin-left: 15px;
 }
 #input {
-right: 0;
+left: 50px;
 margin: 0;
 width: 300px;
 &::placeholder {
