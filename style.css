@@ -454,4 +454,6 @@ body.purple #divthemes {
     #sites { gap: 10px; }
     #list { min-width: 120px; }
     #cursLabel, #clockLabel, #dateLabel { font-size: 14px;}
+    #divthemes { display: none; }
+    #themes {display: none;}
 }

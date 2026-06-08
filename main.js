@@ -8,7 +8,6 @@ const chTime = document.getElementById("clock");
 const date = document.getElementById("date");
 const chDate = document.getElementById("chDate");
 const chCurs = document.getElementById("chCurs");
-const Theme = document.getElementById("Theme");
 const curs = document.getElementById("curses");
 
 // Функция открытия сайта
@@ -45,21 +44,6 @@ function applyTheme() {
         Theme.checked = false;
     }
 }
-
-Theme.onclick = function() {
-    document.body.classList.toggle("темная");
-    applyTheme();
-};
-
-const currentTheme = localStorage.getItem('savedTheme');
-if (currentTheme === 'dark') {
-    document.body.classList.add('темная');
-    Theme.checked = true;
-} else {
-    document.body.classList.remove('темная');
-    Theme.checked = false;
-}
-
 // ========== ЧАСЫ ==========
 function Time() {
     let now = new Date();
