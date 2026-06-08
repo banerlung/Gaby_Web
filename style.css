@@ -19,7 +19,7 @@ body {
     padding: 0;
 }
 
-.темная {
+.dark {
     background-color: #1a1a1d;
     color: #ffffff; 
 }
@@ -172,12 +172,10 @@ h1 { font-family: Oswald; }
     padding: 5px;
     background-color: #2a2a2f;
     color: #ffffff;
-    max-width: 100px;
+    min-width: 160px;
     border-radius: 5px;
     transition: transform 0.3s ease, opacity 0.4s ease, visibility 0.5s ease, background-color 0.3s ease, box-shadow 0.3s ease;
     transform: translateX(0);
-    min-width: 150px;
-    width: auto;
     height: auto;
 }
 
@@ -203,7 +201,9 @@ button:hover {
     transition: all 0.2s ease;
     transform: scale(102%);
 }
-
+label {
+float: left;
+}
 #menu {
     padding: 0;
     border: none;
@@ -251,7 +251,6 @@ button:hover {
 }
 
 #clockLabel {
-    color: #ffffff;
     text-align: center;
     font-size: 18px;
     font-weight: 500;
@@ -274,7 +273,7 @@ footer {
     bottom: 0;
 }
 
-a { color: #ffffff; }
+a { color: #5b5b63; }
 
 #informatiion {
     display: flex;
@@ -306,7 +305,6 @@ a { color: #ffffff; }
 }
 
 #dateLabel {
-    color: #ffffff;
     text-align: center;
     font-size: 18px;
 }
@@ -348,7 +346,102 @@ a { color: #ffffff; }
     margin: 0;
 }
 
-/* ========== ТОЛЬКО ТЕЛЕФОНЫ (до 780px) ========== */
+#themeLabel {
+margin-bottom: 15px;
+}
+#themes {
+position: absolute;
+bottom: 30px;
+right: 3px;
+z-index: 3;
+width: 150px;
+cursor: pointer;
+height: 60px;
+font-size: 18px;
+padding: 5px;
+}
+#divthemes {
+position: absolute;
+bottom: 100px;
+padding: 20px;
+right:  5px;
+width: 300px;
+height: 250px;
+background-color: #51515a;
+border-radius: 15px;
+display: grid;
+grid-template-columns: repeat(2, 1fr); /* 3 столбца одинаковой ширины */
+grid-template-rows: repeat(2, 60px);
+gap: 15px;
+}
+.item {
+background-color: #7a7a86;
+width: 130px;
+cursor: pointer;
+height: 60px;
+display: flex;
+justify-content: center;
+align-items: center;
+border-radius: 7px;
+&:hover {
+background-color: #626269;
+    }
+}
+.hidden { 
+opacity: 0;
+visibility: hidden;
+}
+/* ========== ДОПОЛНИТЕЛЬНЫЕ ТЕМЫ ========== */
+body.light-cyan {
+    background: linear-gradient(135deg, #b8e1fc, #d0f0fd);
+    color: #023b66;
+}
+body.light-cyan #input,
+body.light-cyan #result,
+body.light-cyan #list,
+body.light-cyan .item,
+body.light-cyan #divthemes {
+    background-color: #ffffffd0;
+    color: #023b66;
+}
+body.light-green {
+    background: linear-gradient(135deg, #b9fbc0, #a3e4a7);
+    color: #0a3b14;
+}
+body.light-green #input,
+body.light-green #result,
+body.light-green #list,
+body.light-green .item,
+body.light-green #divthemes {
+    background-color: #ffffffd0;
+    color: #0a3b14;
+}
+
+body.light-yellow {
+    background: linear-gradient(135deg, #fff0b5, #ffe084);
+    color: #6b4c00;
+}
+body.light-yellow #input,
+body.light-yellow #result,
+body.light-yellow #list,
+body.light-yellow .item,
+body.light-yellow #divthemes {
+    background-color: #ffffffd0;
+    color: #6b4c00;
+}
+
+body.purple {
+    background: linear-gradient(135deg, #d9b4ff, #c085f0);
+    color: #2a004d;
+}
+body.purple #input,
+body.purple #result,
+body.purple #list,
+body.purple .item,
+body.purple #divthemes {
+    background-color: #ffffffd0;
+    color: #2a004d;
+}
 @media (max-width: 780px) {
     #search { margin-top: 80px; }
     #searchValue { gap: 8px; }
@@ -360,5 +453,5 @@ a { color: #ffffff; }
     .sites { max-width: 40px; max-height: 40px; }
     #sites { gap: 10px; }
     #list { min-width: 120px; }
-    #cursLabel, #clockLabel, #dateLabel { font-size: 14px; }
+    #cursLabel, #clockLabel, #dateLabel { font-size: 14px;}
 }
