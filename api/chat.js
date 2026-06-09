@@ -68,7 +68,7 @@ const even = nums.filter(n => n % 2 === 0);</code></pre>
   <li>Метод не изменяет исходный массив.</li>
   <li>Возвращает новый отфильтрованный массив элементов.</li>
 </ul>
-Запрос пользователя ответь на него правильно: ${query}`;
+Запрос пользователя ответь на него правильно: ${prompt}`;
 
   try {
     const response = await fetch('https://api.groq.com/openai/v1/chat/completions', {
