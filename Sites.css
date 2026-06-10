@@ -84,10 +84,6 @@ left: 100px;
 top: 5px;
 width: 859px;
 height: 50px;
-&::placeholder {
-color: rgb(255, 255, 255);
-font-size: 18px;
-}
 &:focus {
 border: none;
 }
