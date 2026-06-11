@@ -49,11 +49,9 @@ function Time() {
     let now = new Date();
     let hours = now.getHours();
     let minutes = now.getMinutes();
-    let seconds = now.getSeconds();
     if (hours < 10) hours = '0' + hours;
     if (minutes < 10) minutes = '0' + minutes;
-    if (seconds < 10) seconds = '0' + seconds;
-    if (time) time.textContent = `${hours}:${minutes}:${seconds}`;
+    if (time) time.textContent = `${hours}:${minutes}`;
 }
 Time();
 setInterval(Time, 1000);
@@ -82,15 +80,14 @@ if (savedClock !== null) {
 }
 toggleClockVisibility();
 
-// ========== ДАТА ==========
 function getDate() {
-    let now = new Date();
-    let day = now.getDate();
-    let month = now.getMonth() + 1;
-    let year = now.getFullYear();
-    if (day < 10) day = '0' + day;
-    if (month < 10) month = '0' + month;
-    date.textContent = `${day}.${month}.${year}`;
+    const now = new Date();
+    const days = ['воскресенье', 'понедельник', 'вторник', 'среда', 'четверг', 'пятница', 'суббота'];
+    const months = ['января', 'февраля', 'марта', 'апреля', 'мая', 'июня', 'июля', 'августа', 'сентября', 'октября', 'ноября', 'декабря'];
+    const dayName = days[now.getDay()];
+    const dayNumber = now.getDate();
+    const monthName = months[now.getMonth()];
+    date.textContent = `${dayName}, ${dayNumber} ${monthName}`;
 }
 getDate();
 
@@ -175,10 +172,17 @@ function applyColorTheme(themeName) {
     document.body.classList.remove('light-cyan', 'light-green', 'light-yellow', 'purple', 'dark', 'light');
     // Добавляем новый класс
     document.body.classList.add(themeName);
+    darkIcon()
     // Сохраняем тему в localStorage
     localStorage.setItem('colorTheme', themeName);
 }
-
+function darkIcon() {
+const isDarkTheme = document.body.classList.contains("dark");
+const svg = document.getElementById("icon");
+const themeB = document.getElementById("themeB");
+themeB.setAttribute('stroke', isDarkTheme ? '#ffffff' : '#1a1a1d');
+svg.setAttribute('fill', isDarkTheme ? '#ffffff' : '#1a1a1d');
+}
 function loadColorTheme() {
     const savedTheme = localStorage.getItem('colorTheme');
     if (savedTheme) {

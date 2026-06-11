@@ -6,14 +6,22 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    border: none;
 }
-
+.itemS {
+border: none;
+border-radius: 50%;
+width: 50px;
+height: 50px;
+display: flex;
+align-items: center;
+justify-content: center;
+}
 body {
     font-family: 'Courier New', Courier, monospace;
-    min-height: 100vh;
+    height: 100vh;
     background-color: #f4f4f6;
     color: #000000;
-    transition: all 0.6s ease;
     overflow-x: hidden;
     margin: 0;
     padding: 0;
@@ -72,8 +80,7 @@ body {
     justify-content: center; 
     text-align: center;
     padding: 10px;
-    margin: 60px auto 0 auto;
-    color: white;
+    margin: 200px auto 0 auto;
     max-width: 600px;
     border-radius: 15px;
 }
@@ -192,8 +199,7 @@ button {
     height: 24px;
     border-radius: 9px;
     background: #7A7A7A;
-    color: #ffffff;
-    transition: all 0.8s ease;
+    color: #8e8e99;
 }
 
 button:hover {
@@ -209,8 +215,6 @@ float: left;
     border: none;
     background: transparent;
     cursor: pointer;
-    width: 60px;
-    height: 60px;
 }
 
 #menu img {
@@ -235,6 +239,7 @@ float: left;
     height: auto;
     text-align: center;
     padding: 0;
+    font-weight: 200;
     margin-bottom: 0;
     margin-top: 0px;
     margin-left: 10px;
@@ -257,10 +262,14 @@ float: left;
 }
 
 #gaby {
+    text-align: center;
     font-family: 'Onest', 'sans-serif';
     font-size: 3.6rem;
-    font-weight: 700;
-    text-align: center;
+    font-weight: 400;
+    margin-top: 100px;
+    position: absolute;
+    left: 0;
+    right: 0;
     cursor: default;
     user-select: none;
 }
@@ -269,8 +278,9 @@ footer {
     position: absolute;
     text-align: center;
     left: 0;
+    background-color: #252529;
     right: 0;
-    bottom: 0;
+    bottom: -100px;
 }
 
 a { color: #5b5b63; }
@@ -303,12 +313,18 @@ a { color: #5b5b63; }
     font-size: 14px;
     text-align: left;
 }
-
+#curses {
+font-weight: 300;
+}
 #dateLabel {
     text-align: center;
     font-size: 18px;
 }
-
+#date {
+font-weight: 300;
+padding: 0;
+margin: 0;
+}
 .switcher {
     position: relative;
     width: 50px;
@@ -316,7 +332,7 @@ a { color: #5b5b63; }
     float: right;
     height: 24px;
     border-radius: 20px;
-    background-color: #8f8f96;
+    background-color: #696969;
     appearance: none;
     transition: all 0.3s ease;
 }
@@ -338,14 +354,6 @@ a { color: #5b5b63; }
 }
 
 .switcher:checked::before { transform: translateX(25px); }
-
-#weatherLabel {
-    text-align: center;
-    font-size: 18px;
-    font-weight: 500;
-    margin: 0;
-}
-
 #themeLabel {
 margin-bottom: 15px;
 }
@@ -353,11 +361,12 @@ margin-bottom: 15px;
 position: absolute;
 bottom: 30px;
 right: 3px;
-z-index: 3;
-width: 150px;
+border-radius: 50%;
+width: 60px;
 cursor: pointer;
 height: 60px;
 font-size: 18px;
+background-color: #2a2a2f;
 padding: 5px;
 }
 #divthemes {
@@ -367,7 +376,7 @@ padding: 20px;
 right:  5px;
 width: 300px;
 height: 250px;
-background-color: #51515a;
+background-color: #2a2a2f;
 border-radius: 15px;
 display: grid;
 grid-template-columns: repeat(2, 1fr); /* 3 столбца одинаковой ширины */
@@ -375,7 +384,7 @@ grid-template-rows: repeat(2, 60px);
 gap: 15px;
 }
 .item {
-background-color: #7a7a86;
+background-color: #5d5d66;
 width: 130px;
 cursor: pointer;
 height: 60px;

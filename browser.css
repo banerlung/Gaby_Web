@@ -39,6 +39,7 @@ body {
     overflow-x: auto;
     white-space: nowrap;
     gap: 6px;
+    overflow-y: hidden;
     padding: 5px 10px;
     height: 48px;
     background-color: #1a1a1d;
@@ -140,11 +141,10 @@ body {
     filter: invert(1);
 }
 
-/* Вкладки */
 .site {
     display: inline-flex;
     align-items: center;
-    gap: 6px;
+    margin-right: 3px;
     background-color: #2a2a2f;
     border-radius: 20px;
     padding: 4px 12px 4px 16px;

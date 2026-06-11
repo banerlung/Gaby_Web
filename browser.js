@@ -6,7 +6,6 @@ const divSites = document.getElementById("sites"); //сайты
 const start = document.getElementById("start"); //стартовый iframe
 start.src = site;
 let active = []; //активные вкладки
-let max = 12; //максимальное количество вкладок
 if(active.length <= 0) {
     divSites.style.display = "none"
 }
@@ -28,46 +27,44 @@ searchBtn.onclick = function() {
     divSites.style.display = "block";
     inputSearch.value = null;
     if (!url) return;
-    if (active.length < max) {
-        let site2 = document.createElement('button');
-        let close = document.createElement('span');
-        let spanText = document.createElement('span');
-        let iframe = document.createElement("iframe");
-        let icon = document.createElement("img");
-        icon.src = `https://www.google.com/s2/favicons?domain=${url}`;
-        icon.classList.add('icon');
-        site2.classList.add('site');
-        site2.appendChild(icon);
-        site2.appendChild(spanText);
-        site2.appendChild(close);
-        spanText.innerText = url;
-        close.innerHTML = "&times;";
-        close.classList.add("close");
-        iframe.src = url;
-        iframe.classList.add("window");
-        document.body.appendChild(iframe);
-        divSites.appendChild(site2);
-        active.push(site2.textContent);     
-        site2.onclick = function(e) {
-        showTab(site2, iframe);
-        };
-
-        close.onclick = function(e) {
-             const index = active.indexOf(site2.textContent);
-             if (index !== -1) {
-                active.splice(index, 1);  // удаляем из массива
-             }
-             if(active.length <= 0) {
-                divSites.style.display = "none"
-                iframe.src = "https://elgoog.im"
-            }
-            iframe.remove();
-            site2.remove();
-        };
-    } else {
-        alert("Максимум вкладок!");
-    }
     
+    let site2 = document.createElement('button');
+    let close = document.createElement('span');
+    let spanText = document.createElement('span');
+    let iframe = document.createElement("iframe");
+    let icon = document.createElement("img");
+    
+    icon.src = `https://www.google.com/s2/favicons?domain=${url}`;
+    icon.classList.add('icon');
+    site2.classList.add('site');
+    site2.appendChild(icon);
+    site2.appendChild(spanText);
+    site2.appendChild(close);
+    spanText.innerText = url;
+    close.innerHTML = "&times;";
+    close.classList.add("close");
+    iframe.src = url;
+    iframe.classList.add("window");
+    document.body.appendChild(iframe);
+    divSites.appendChild(site2);
+    active.push(site2.textContent);
+    showTab(site2, iframe);   
+    site2.onclick = function(e) {
+        showTab(site2, iframe);
+    };
+
+    close.onclick = function(e) {
+        const index = active.indexOf(site2.textContent);
+        if (index !== -1) {
+            active.splice(index, 1);
+        }
+        iframe.remove();
+        site2.remove();
+        
+        if (active.length <= 0) {
+            divSites.style.display = "none";
+        }
+    };
 };
     function showTab(btn, activeFrame) {
     let allFrames = document.querySelectorAll('.window');
