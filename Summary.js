@@ -12,9 +12,9 @@ async function Summary(query) {
     const res = await fetch('/api/chat', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
+      signal: controller.signal,
       body: JSON.stringify({
         prompt: query,
-        signal: controller.signal
       })
     });
 
