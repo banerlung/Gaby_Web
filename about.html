@@ -1,0 +1,531 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="fhoto/G.svg">
+    <title>Gaby — быстрый и приватный браузер</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: #1a1a1d;
+            font-family: 'Segoe UI', 'Onest', system-ui, -apple-system, sans-serif;
+            color: #f0f0f0;
+            line-height: 1.5;
+            overflow-x: hidden;
+            min-height: 100vh;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        .navbar {
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            background: rgba(26, 26, 29, 0.85);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+            padding: 16px 0;
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 24px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+
+        .nav-logo {
+            font-size: 1.8rem;
+            font-weight: 800;
+            background: linear-gradient(135deg, #ffffff, #a0a0a0);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            user-select: none;
+            text-decoration: none;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 24px;
+            flex-wrap: wrap;
+        }
+
+        .nav-links a {
+            color: #e0e0e0;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.2s;
+            padding-bottom: 4px;
+            border-bottom: 2px solid transparent;
+        }
+
+        .nav-links a:hover {
+            color: #f18a2a;
+            border-bottom-color: #f18a2a;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 24px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .hero {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: space-between;
+            gap: 40px;
+            padding: 80px 0 60px;
+            opacity: 0;
+            animation: fadeInUp 0.6s ease 0.1s forwards;
+        }
+
+        .hero-text {
+            flex: 1;
+            min-width: 280px;
+        }
+
+        .hero-text h1 {
+            font-size: 3rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+            line-height: 1.2;
+        }
+
+        .hero-text p {
+            font-size: 1.2rem;
+            opacity: 0.8;
+            margin-bottom: 32px;
+        }
+
+        .btn-group {
+            display: flex;
+            gap: 16px;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 14px 32px;
+            border-radius: 40px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .btn-primary {
+            background-color: #da7d26;
+            color: #1a1a1d;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            background-color: #f18a2a;
+            box-shadow: 0 8px 24px rgba(0,0,0,0.3);
+        }
+
+        .btn-secondary {
+            background-color: #ffffff;
+            color: #1a1a1d;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+        }
+
+        .btn-secondary:hover {
+            transform: translateY(-3px);
+            background-color: #e0e0e0;
+            box-shadow: 0 8px 24px rgba(0,0,0,0.3);
+        }
+
+        .hero-image {
+            flex: 1;
+            text-align: center;
+            display: flex;
+            justify-content: center;
+            background: rgba(255,255,255,0.03);
+            border-radius: 32px;
+            padding: 24px;
+            min-height: 300px;
+            align-items: center;
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255,255,255,0.08);
+        }
+
+        .hero-image img {
+            max-width: 180px;
+            user-select: none;
+            user-drag: none;
+            -webkit-user-drag: none;
+        }
+
+        .features {
+            padding: 80px 0;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.2rem;
+            margin-bottom: 48px;
+            font-weight: 600;
+            opacity: 0;
+            animation: fadeInUp 0.6s ease 0.2s forwards;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 32px;
+        }
+
+        .card {
+            background: rgba(255,255,255,0.05);
+            border-radius: 28px;
+            padding: 32px 24px;
+            backdrop-filter: blur(12px);
+            transition: transform 0.4s ease, box-shadow 0.4s ease, background-color 0.3s;
+            opacity: 0;
+            transform: translateY(30px);
+            border: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .card.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .card:hover {
+            transform: translateY(-8px);
+            background: rgba(255,255,255,0.12);
+            border-color: rgba(255,255,255,0.25);
+            box-shadow: 0 20px 35px -15px rgba(0,0,0,0.4);
+        }
+
+        .card-icon {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+        }
+
+        .card h3 {
+            font-size: 1.6rem;
+            margin-bottom: 12px;
+        }
+
+        .card p {
+            opacity: 0.8;
+            font-size: 1rem;
+        }
+
+
+        .news-section {
+            margin: 40px 0 60px;
+        }
+
+        .news-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 32px;
+        }
+
+        .news-card {
+            background: rgba(255,255,255,0.05);
+            border-radius: 28px;
+            padding: 28px 24px;
+            backdrop-filter: blur(12px);
+            transition: all 0.3s ease;
+            border: 1px solid rgba(255,255,255,0.1);
+            opacity: 0;
+            transform: translateY(30px);
+        }
+
+        .news-card.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .news-card:hover {
+            transform: translateY(-5px);
+            background: rgba(255,255,255,0.1);
+        }
+
+        .news-date {
+            font-size: 0.85rem;
+            color: #f18a2a;
+            margin-bottom: 8px;
+            display: block;
+        }
+
+        .news-card h3 {
+            font-size: 1.4rem;
+            margin-bottom: 12px;
+        }
+
+        .news-card p {
+            opacity: 0.8;
+            font-size: 0.95rem;
+        }
+
+        .actions-section {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 32px;
+            margin: 40px 0 80px;
+        }
+
+        .action-card {
+            background: rgba(241,138,42,0.08);
+            border-radius: 40px;
+            padding: 40px 32px;
+            text-align: center;
+            border: 1px solid rgba(241,138,42,0.2);
+            transition: all 0.3s;
+            opacity: 0;
+            animation: fadeInUp 0.6s ease forwards;
+        }
+
+        .action-card:hover {
+            background: rgba(241,138,42,0.12);
+            border-color: rgba(241,138,42,0.4);
+            transform: translateY(-5px);
+        }
+
+        .action-card h2 {
+            margin-bottom: 16px;
+        }
+
+        .action-card p {
+            max-width: 400px;
+            margin: 0 auto 24px;
+            opacity: 0.9;
+        }
+
+        .action-card .btn {
+            margin-top: 8px;
+        }
+
+        .footer {
+            border-top: 1px solid rgba(255,255,255,0.05);
+            padding: 32px 0;
+            text-align: center;
+            font-size: 0.85rem;
+            opacity: 0.6;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(40px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @media (max-width: 780px) {
+            .hero-text h1 {
+                font-size: 2.2rem;
+            }
+            .btn {
+                padding: 10px 24px;
+            }
+            .container {
+                padding: 0 16px;
+            }
+            .card, .news-card, .action-card {
+                backdrop-filter: blur(8px);
+            }
+            .navbar {
+                padding: 12px 0;
+            }
+            .nav-container {
+                flex-direction: column;
+                gap: 12px;
+            }
+            .nav-links {
+                gap: 16px;
+                justify-content: center;
+            }
+            .hero {
+                padding-top: 40px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="#" class="nav-logo">Gaby</a>
+            <div class="nav-links">
+                <a href="#hero">Главная</a>
+                <a href="#news">Новости</a>
+                <a href="#idea">Предложить идею</a>
+                <a href="#feedback">Оставить отзыв</a>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container">
+        <div id="hero" class="hero">
+            <div class="hero-text">
+                <h1>Быстрый, приватный,<br>свой</h1>
+                <p>Gaby — это не просто браузер, а ваш личный цифровой помощник. Никакой рекламы, никакой телеметрии. Только свобода и скорость.</p>
+                <div class="btn-group">
+                    <a href="https://gaby-web-nine.vercel.app" class="btn btn-primary">Скачать на Windows</a>
+                    <a href="https://gabyweb.ru" class="btn btn-secondary">Открыть веб версию</a>
+                </div>
+            </div>
+            <div class="hero-image">
+                <img src="fhoto/G.svg" alt="gaby logo" height="120px" width="120px">
+            </div>
+        </div>
+
+        <div class="features">
+            <h2 class="section-title">Почему Gaby?</h2>
+            <div class="grid" id="featuresGrid">
+                <div class="card">
+                    <div class="card-icon">⚡</div>
+                    <h3>Молниеносная скорость</h3>
+                    <p>Минималистичный интерфейс без мусора — ничего лишнего, только нужное.</p>
+                </div>
+                <div class="card">
+                    <div class="card-icon">🔒</div>
+                    <h3>Полная анонимность</h3>
+                    <p>Никакой слежки, история поиска отключается, браузер не передаёт данные.</p>
+                </div>
+                <div class="card">
+                    <div class="card-icon">🤖</div>
+                    <h3>Встроенный ИИ (Gaby AI)</h3>
+                    <p>Ответы на любые вопросы, генерация кода, объяснения — прямо в браузере.</p>
+                </div>
+                <div class="card">
+                    <div class="card-icon">📑</div>
+                    <h3>Умные вкладки</h3>
+                    <p>Перетаскивание, закладки, быстрый поиск по страницам.</p>
+                </div>
+                <div class="card">
+                    <div class="card-icon">🎨</div>
+                    <h3>Адаптивный дизайн</h3>
+                    <p>Отлично выглядит на любом устройстве — от ПК до телефона.</p>
+                </div>
+                <div class="card">
+                    <div class="card-icon">💡</div>
+                    <h3>Open Source</h3>
+                    <p>Исходный код доступен на GitHub — можешь участвовать в разработке.</p>
+                </div>
+            </div>
+        </div>
+
+   <div id="news" class="news-section">
+    <h2 class="section-title">Новости</h2>
+    <div id="newsContainer" class="news-grid">
+        <div class="loading">Подгрузка новостей...</div>
+    </div>
+</div>
+
+        <div class="actions-section">
+            <div id="feedback" class="action-card">
+                <h2>📝 Оставить отзыв</h2>
+                <p>Расскажите, что нравится, а что можно улучшить.</p>
+                <a href="mailto:GabyWhelp@gmail.com?subject=Отзыв о Gaby" class="btn btn-primary" style="background-color: #f18a2a;">Написать отзыв →</a>
+            </div>
+            <div id="idea" class="action-card">
+                <h2>💡 Предложить идею</h2>
+                <p>Есть идея для новой функции? Поделитесь, и мы её рассмотрим.</p>
+                <a href="mailto:GabyWhelp@gmail.com?subject=Идея для Gaby" class="btn btn-primary" style="background-color: #f18a2a;">Предложить идею →</a>
+            </div>
+        </div>
+
+        <div class="footer">
+            <p>© 2026 Gaby. Все права защищены. | При поддержке <a href="https://xelltech.ru/" style="color: white; opacity: 0.7;">xelltech.ru</a></p>
+        </div>
+    </div>
+
+    <script>
+        const cards = document.querySelectorAll('.card');
+        const newsCards = document.querySelectorAll('.news-card');
+        const allAnimated = [...cards, ...newsCards];
+
+        function checkVisibility() {
+            allAnimated.forEach(el => {
+                const rect = el.getBoundingClientRect();
+                if (rect.top < window.innerHeight - 100) {
+                    el.classList.add('visible');
+                }
+            });
+        }
+
+        window.addEventListener('load', () => {
+            checkVisibility();
+            window.addEventListener('scroll', checkVisibility);
+        });
+    </script>
+    <script>
+async function loadNews() {
+    const csvUrl = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vRTbrBTb-VS9NMtLsoeZZai79DL-KLyiXkVdePipCNicrSLSUqwrd4JiX5F_LfusXPWVBub-9NSenjB/pub?output=csv';
+    
+    try {
+        const response = await fetch(csvUrl);
+        const csvText = await response.text();
+        
+        const rows = csvText.split('\n');
+        const news = [];
+        
+        for (let i = 1; i < rows.length; i++) {
+            if (!rows[i].trim()) continue;
+            const values = rows[i].split(',').map(v => v.replace(/^"|"$/g, '').trim());
+            if (values.length >= 3) {
+                news.push({
+                    date: values[0],
+                    title: values[1],
+                    description: values[2]
+                });
+            }
+        }
+        
+        const container = document.getElementById('newsContainer');
+        if (!container) return;
+        
+        if (news.length === 0) {
+            container.innerHTML = '<div class="news-card">📭 Новостей пока нет</div>';
+            return;
+        }
+        
+        container.innerHTML = news.map(item => `
+            <div class="news-card">
+                <span class="news-date">${item.date}</span>
+                <h3>${item.title}</h3>
+                <p>${item.description}</p>
+            </div>
+        `).join('');
+        
+        document.querySelectorAll('.news-card').forEach(card => card.classList.add('visible'));
+        
+    } catch (error) {
+        console.error('Ошибка загрузки новостей:', error);
+        const container = document.getElementById('newsContainer');
+        if (container) {
+            container.innerHTML = '<div class="news-card">⚠️ Не удалось загрузить новости</div>';
+        }
+    }
+}
+
+loadNews();
+</script>
+</body>
+</html>
