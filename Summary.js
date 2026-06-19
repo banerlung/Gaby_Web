@@ -2,54 +2,38 @@ let controller = null;
 
 async function Summary(query) {
   try {
-    // Отменяем предыдущий запрос, если он ещё идёт
     if (controller) {
       controller.abort();
     }
     controller = new AbortController();
 
-    // Запрос идёт на наш Vercel API (не напрямую в Groq!)
-    const res = await fetch('/api/chat', {
+    const res = await fetch('https://gabyweb.ru/xair/api/chat', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       signal: controller.signal,
       body: JSON.stringify({
-        prompt: query,
+        model: "gemma3:1b",
+        messages: [
+          { role: "system", content: "Отвечай на русском. Только 1 предложение. Только суть. Без HTML, без форматирования. Просто текст." },
+          { role: "user", content: query }
+        ],
+        stream: false
       })
     });
 
-    const data = await res.json();
-
-    if (data.error) {
-      return `<p style="color:red">Ошибка ИИ: ${data.error}</p>`;
-    }
-
-    if (data.response) {
-      // Очищаем ответ от markdown-тегов (как у тебя было)
-      let html = data.response
-        .replace(/```html/g, '')
-        .replace(/```javascript/g, '')
-        .replace(/```/g, '')
-        .trim();
-      
-      return html;
-    }
+    const text = await res.text();
     
-    return '<p style="color:red">Пустой ответ от ИИ</p>';
+    if (!text || text.startsWith('<!') || text.startsWith('<html')) return '';
+
+    const data = JSON.parse(text);
+    return data.message?.content?.trim() || '';
 
   } catch (err) {
-    if (err.name === 'AbortError') {
-      console.log('Запрос отменён');
-      return '';
-    }
-    console.error('Error:', err);
-    return '<p style="color:red">Ошибка связи с ИИ</p>';
+    if (err.name === 'AbortError') return '';
+    return '';
   }
 }
 
-// Исправил баг: было aiController, стало controller
 window.addEventListener('beforeunload', () => {
-  if (controller) {
-    controller.abort();
-  }
+  if (controller) controller.abort();
 });
