@@ -108,7 +108,7 @@ body {
     color: #6e6e78;
 }
 
-#input::placeholder { color: #6e6e78; }
+#input::placeholder { color: #8e8e9b; }
 
 #result {
     display: flex;
@@ -174,7 +174,8 @@ h1 { font-family: Oswald; }
     flex-direction: column;
     gap: 12px;
     padding: 16px 20px;
-    background: rgba(30, 30, 35, 0.55);
+    background: #2a2a2f;
+    border: 1px solid #808080;
     backdrop-filter: blur(20px) saturate(180%);
     -webkit-backdrop-filter: blur(20px) saturate(180%);
     border-radius: 24px;
@@ -372,7 +373,8 @@ a { color: #5b5b63; }
     right: 5px;
     width: 300px;
     height: 250px;
-    background: rgba(30, 30, 35, 0.55);
+    background: #2a2a2f;
+    border: 1px solid #808080;
     backdrop-filter: blur(20px) saturate(180%);
     -webkit-backdrop-filter: blur(20px) saturate(180%);
     border-radius: 24px;
@@ -402,10 +404,10 @@ a { color: #5b5b63; }
     display: flex;
     justify-content: center;
     align-items: center;
-    border-radius: 7px;
+    border-radius: 15px;
 }
 .item:hover {
-    background-color: #626269;
+    background-color: #2a2a2f;
 }
 /* ========== ДОПОЛНИТЕЛЬНЫЕ ТЕМЫ ========== */
 body.light-cyan {
@@ -419,6 +421,7 @@ body.light-cyan .item,
 body.light-cyan #divthemes {
     background-color: #ffffffd0;
     color: #023b66;
+
 }
 body.light-green {
     background: linear-gradient(135deg, #b9fbc0, #a3e4a7);
