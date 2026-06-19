@@ -1,4 +1,4 @@
-const site = localStorage.getItem("SearchQuery"); //url сайта с поиска
+const site = localStorage.getItem("url"); //url сайта с поиска
 const back = document.getElementById("back"); //кнопка назад
 const searchBtn = document.getElementById("search"); //кнопка поиска
 const inputSearch = document.getElementById("urlAdress"); //input поиска
@@ -22,7 +22,13 @@ if (homeBtn) {
         open("index.html"); 
     };
 }
-searchBtn.onclick = function() {
+inputSearch.addEventListener('keydown', (e) => {
+    if(e.key === 'Enter') {
+        e.preventDefault();
+        showSites()
+    }
+})
+function showSites() {
     let url = inputSearch.value;
     divSites.style.display = "block";
     inputSearch.value = null;
@@ -52,8 +58,7 @@ searchBtn.onclick = function() {
     site2.onclick = function(e) {
         showTab(site2, iframe);
     };
-
-    close.onclick = function(e) {
+    close.onclick = function() {
         const index = active.indexOf(site2.textContent);
         if (index !== -1) {
             active.splice(index, 1);
@@ -65,7 +70,9 @@ searchBtn.onclick = function() {
             divSites.style.display = "none";
         }
     };
+    
 };
+searchBtn.onclick = showSites();
     function showTab(btn, activeFrame) {
     let allFrames = document.querySelectorAll('.window');
     for (let i = 0; i < allFrames.length; i++) {

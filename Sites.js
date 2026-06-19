@@ -3,7 +3,7 @@ let input = document.getElementById("input"); //главный input на стр
 let searchBtn = document.getElementById("search"); //кнопка поиска
 function SiteOrUrl(url) { // функция для проверки сайт или ссылка
     if(url.includes("http:/") || url.includes("https:/")) {
-        localStorage.setItem("resultSearch", url);
+        localStorage.setItem("url", url);
         window.open("browser.html");
     } else {
         ShowSites(url);
@@ -61,14 +61,16 @@ async function ShowSites(urlSite) { //главная функция отрисо
     let list = document.getElementById("results");
     list.innerHTML = '';
         topics.forEach(site => {
+
             let url = site.link;
             let text = site.snippet;
             let header = site.title;
             let result = document.createElement('div');
-            let TextUrl = document.createElement("a");
+            let TextUrl = document.createElement("p");
             let description = document.createElement("p");
             let headerText = document.createElement("h2");
             let icon = document.createElement("img");
+
             result.appendChild(icon);
             result.appendChild(headerText);
             result.appendChild(description);
@@ -85,11 +87,11 @@ async function ShowSites(urlSite) { //главная функция отрисо
             list.appendChild(result);
             result.appendChild(TextUrl);
             result.onclick = function() {
-            localStorage.setItem("resultSearch", url);
-            window.open("browser.html", target = "_self");
+                localStorage.setItem("url", url);
+                window.open("browser.html", target = "_self");
             }
         });
     } catch(error) {
-        console.error("Ошибка, мы работаем над эти, служба поддержки: banerlung@gmail.com " + error);
+        console.error("Ошибка: " + error);
     };
 };

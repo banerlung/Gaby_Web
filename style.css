@@ -185,8 +185,6 @@ h1 { font-family: Oswald; }
     transform: translateX(0);
 }
 
-#list:hover { box-shadow: 7px 5px 10px rgba(0, 0, 0, 0.8); }
-
 #list.hidden {
     transform: translateX(-150%);
     opacity: 0;

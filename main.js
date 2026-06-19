@@ -34,7 +34,6 @@ MenuButton.onclick = function() {
     list.classList.toggle('hidden');
 };
 
-// ========== СОХРАНЕНИЕ ТЕМЫ ==========
 function applyTheme() {
     if (document.body.classList.contains('темная')) {
         localStorage.setItem('savedTheme', 'dark');
@@ -44,7 +43,6 @@ function applyTheme() {
         Theme.checked = false;
     }
 }
-// ========== ЧАСЫ ==========
 function Time() {
     let now = new Date();
     let hours = now.getHours();
@@ -54,7 +52,7 @@ function Time() {
     if (time) time.textContent = `${hours}:${minutes}`;
 }
 Time();
-setInterval(Time, 1000);
+setInterval(Time, 60000);
 
 // Сохранение/загрузка видимости часов
 function saveClockVisibility() {
@@ -114,7 +112,6 @@ if (savedDate !== null) {
 }
 toggleDate();
 
-// ========== КУРСЫ ВАЛЮТ ==========
 async function loadCurrency() {
     try {
         const res = await fetch('https://api.exchangerate-api.com/v4/latest/USD');
@@ -156,7 +153,6 @@ document.addEventListener('DOMContentLoaded', () => {
     if (chCurs.checked) loadCurrency();
     setInterval(loadCurrency, 10 * 60 * 1000);
 });
-// ========== ТЕМЫ ИЗ .item (светло-синяя, светло-зеленая, светло-желтая, фиолетовая) ==========
 const themeItems = document.querySelectorAll('.item');
 const themesDiv = document.getElementById('divthemes');
 const themesButton = document.getElementById('themes');
@@ -168,9 +164,7 @@ if (themesButton && themesDiv) {
 }
 
 function applyColorTheme(themeName) {
-    // Удаляем предыдущие тематические классы
-    document.body.classList.remove('light-cyan', 'light-green', 'light-yellow', 'purple', 'dark', 'light');
-    // Добавляем новый класс
+    document.body.classList.remove('light-cyan', 'light-green', 'light-yellow', 'purple', 'dark');
     document.body.classList.add(themeName);
     darkIcon()
     // Сохраняем тему в localStorage
